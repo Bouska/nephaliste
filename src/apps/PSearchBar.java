@@ -14,19 +14,24 @@ public class PSearchBar extends JPanel {
 	public PSearchBar(){
 		
 		int l;
+	
 		
-		this.setSize(1100,50);
 		
-		l = (int) this.getSize().getWidth();
-		l = l / 40;
-		
-		String str = new String("wrap " + l);
-		MigLayout layout = new MigLayout(str, "center");
+		MigLayout layout = new MigLayout("insets 0 0 0 0");
 		this.setLayout(layout);
 		
 		for(int i = 1; i <= 26; i++){
 			letters.add(new LetterButton(new String(Character.toString((char)(i+64)))));	
-			this.add(letters.get(i-1), "width 40px");
+			if(i%10==0)
+			{
+				this.add(letters.get(i-1), "w 10%,wrap");
+			}
+			else
+			{
+				this.add(letters.get(i-1), "w 10%");
+			}
+			
+			
 		
 		}
 	}

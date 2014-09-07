@@ -11,7 +11,7 @@ public class Debiter extends JPanel{
 	private HashMap<JButton, String> product = new HashMap<JButton, String>();
 	
 	public Debiter(){
-		this.setLayout(new MigLayout());
+		this.setLayout(new MigLayout("insets 0 0 0 0"));
 		PSearchBar search = new PSearchBar();
 		this.add(search,"center");
 		

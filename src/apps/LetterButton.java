@@ -17,7 +17,7 @@ public class LetterButton extends JCheckBox{
 
 	@Override
 	public void paintComponent(Graphics g){
-		g.clearRect(0,0,100,100);
+		g.clearRect(0,0,this.getWidth(),this.getHeight());
 		if(this.isSelected()){
 			color = Color.DARK_GRAY;
 		}
@@ -26,9 +26,9 @@ public class LetterButton extends JCheckBox{
 			color = Color.LIGHT_GRAY;
 		}
 		g.setColor(color);
-		g.fillRect(0, 0, 100, 100);
+		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 		g.setColor(Color.white);
-		g.drawString(this.getText(), 17, 17);
+		g.drawString(this.getText(), this.getWidth()/2-3, this.getHeight()/2+3);
 		
 			
 	}
