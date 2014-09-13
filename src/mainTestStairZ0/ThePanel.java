@@ -3,6 +3,7 @@ package mainTestStairZ0;
 import aurelienribon.slidinglayout.SLAnimator;
 import aurelienribon.tweenengine.Tween;
 import aurelienribon.tweenengine.TweenManager;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -14,7 +15,10 @@ import java.awt.event.MouseEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
+
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -33,11 +37,12 @@ public class ThePanel extends JPanel {
 	private Runnable action;
 	private boolean actionEnabled = true;
 	private boolean hover = false;
-	private int borderThickness = 2;
+	private int borderThickness = 0;
 
 	public ThePanel(String name, String imgPath) {
-		setBackground(BG_COLOR);
+		setBackground(Color.black);
 		setLayout(new BorderLayout());
+		this.setBorder(BorderFactory.createLineBorder(Color.gray,1));
 
 		label.setForeground(FG_COLOR);
 		label.setFont(new Font("Sans", Font.BOLD, 90));
@@ -52,24 +57,24 @@ public class ThePanel extends JPanel {
 			add(label, BorderLayout.CENTER);
 		}
 
-		addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseEntered(MouseEvent e) {
-				hover = true;
-				if (actionEnabled) showBorder();
-			}
-
-			@Override
-			public void mouseExited(MouseEvent e) {
-				hover = false;
-				hideBorder();
-			}
-
-			@Override
-			public void mouseReleased(MouseEvent e) {
-				if (action != null && actionEnabled) action.run();
-			}
-		});
+//		addMouseListener(new MouseAdapter() {
+//			@Override
+//			public void mouseEntered(MouseEvent e) {
+//				hover = true;
+//				if (actionEnabled) showBorder();
+//			}
+//
+//			@Override
+//			public void mouseExited(MouseEvent e) {
+//				hover = false;
+//				hideBorder();
+//			}
+//
+//			@Override
+//			public void mouseReleased(MouseEvent e) {
+//				if (action != null && actionEnabled) action.run();
+//			}
+//		});
 	}
 
 	public void setAction(Runnable action) {this.action = action;}

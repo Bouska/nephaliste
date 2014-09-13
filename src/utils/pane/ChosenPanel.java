@@ -37,7 +37,9 @@ import net.miginfocom.swing.MigLayout;
 		private SpringLayout overlay = new SpringLayout();
 		public ChosenPanel(int number) {
 			setLayout(new MigLayout());
-//			this.number=number;
+			setBackground(Color.black);
+			
+			//			this.number=number;
 //			extend.setPreferredSize(new Dimension(48,48));
 //			extend.setIcon(new ImageIcon("expand.png"));
 //			extend.setBackground(Color.white);
