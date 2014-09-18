@@ -20,7 +20,6 @@ public class Main {
 		
 		panel.setLayout(layout);
 		panel.add(debiter,"w 100%,h 100%");
-		
 		frame.add(panel);
 		//frame.setUndecorated(true);
 		frame.setResizable(false);
