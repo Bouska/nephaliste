@@ -119,6 +119,19 @@ public class Requests {
 		return test.get(0);
 		
 	}
+	
+	static public ArrayList<String> getProducts(String c){
+		String request = new String();
+		if (c == " "){
+			request = "SELECT nom FROM recettes";
+		}
+		else{
+			request = "SELECT nom FROM recettes LIKE '" + c +"%'";
+		}
+		ArrayList<String> test = db.readRequest(request);
+		return test;
+	}
+	
 	static public void createNewClient()
 	{
 		

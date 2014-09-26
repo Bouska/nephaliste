@@ -4,6 +4,7 @@ package apps;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import javax.swing.*;
 
@@ -12,9 +13,9 @@ import net.miginfocom.swing.MigLayout;
 public class PSearchBar extends JPanel implements ActionListener{
 	
 	
-	private ArrayList<LetterButton> letters = new ArrayList<LetterButton>();
-	public ArrayList<String> testL = new ArrayList<String>();
-	
+	private HashMap<String,LetterButton> letters = new HashMap<String,LetterButton>();
+	public String L = new String();
+	private String selectedLetter = new String();
 	public PSearchBar(){
 			
 		
@@ -22,34 +23,42 @@ public class PSearchBar extends JPanel implements ActionListener{
 		this.setLayout(layout);
 		
 		for(int i = 1; i <= 26; i++){
-			letters.add(new LetterButton(new String(Character.toString((char)(i+64)))));	
-			letters.get(i-1).addActionListener(this);
+			letters.put(new String(Character.toString((char)(i+64))),new LetterButton(new String(Character.toString((char)(i+64)))));	
+			letters.get(Character.toString((char)(i+64))).addActionListener(this);
 			if(i%6==0)
 			{
-				this.add(letters.get(i-1), "w 20%,wrap");
+				this.add(letters.get(Character.toString((char)(i+64))), "w 20%,wrap");
 			}
 			else
 			{
-				this.add(letters.get(i-1), "w 20%");
+				this.add(letters.get(Character.toString((char)(i+64))), "w 20%");
 			}
 		}
 	}
 	
-	public ArrayList<String> getSelected(){
-		ArrayList<String> selectedLetters = new ArrayList<String>();
+	public String getSelected(){
+		if(!selectedLetter.isEmpty()){
+			letters.get(selectedLetter).setSelected(false);
+		}
+		
 		for(int i = 1; i <= 26; i ++){
-			if(letters.get(i-1).isSelected() == true){
-				selectedLetters.add(letters.get(i-1).getText());
+			if(letters.get(Character.toString((char)(i+64))).isSelected() == true){
+				selectedLetter = Character.toString((char)(i+64));
 			}
 		}
-		return selectedLetters;	
+		if(selectedLetter.isEmpty()){
+			return " ";
+		}
+		else{
+			return selectedLetter;	
+		}
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		testL = this.getSelected();
-		System.out.println(testL.toString());
+		L = this.getSelected();
+		
 	}
 
 }
