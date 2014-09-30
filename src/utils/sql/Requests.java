@@ -126,7 +126,7 @@ public class Requests {
 			request = "SELECT nom FROM recettes";
 		}
 		else{
-			request = "SELECT nom FROM recettes LIKE '" + c +"%'";
+			request = "SELECT nom FROM recettes WHERE nom  LIKE '" + c +"%'";
 		}
 		ArrayList<String> test = db.readRequest(request);
 		return test;
