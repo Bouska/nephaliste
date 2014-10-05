@@ -148,24 +148,6 @@ public class Requests {
 		ArrayList<String> test = db.readRequest(request);
 		return test.get(0);
 	}
-	static public String getClientName(String id)
-	{
-		String request = "SELECT name FROM comptes WHERE id = '"+id+"'";
-		ArrayList<String> test = db.readRequest(request);
-		return test.get(0);
-	}
-	static public String getClientPromo(String client)
-	{
-		String request = "SELECT promo FROM comptes WHERE nom = '"+client+"'";
-		ArrayList<String> test = db.readRequest(request);
-		return test.get(0);
-	}
 	
-	static public String getClientCoope(String client)
-	{
-		String request = "SELECT coopeman FROM comptes WHERE nom = '"+client+"'";
-		ArrayList<String> test = db.readRequest(request);
-		return test.get(0);
-	}
 
 }

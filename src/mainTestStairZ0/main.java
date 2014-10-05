@@ -25,7 +25,7 @@ public class main {
 		test.setBackground(Color.black);
 		ChoosingPanel pane = new ChoosingPanel(3,3);
 		pane.setBackground(Color.black);
-		pane.addPanel(new Debiter());
+		
 		
 		test.setContentPane(new ContentPane());
 		
