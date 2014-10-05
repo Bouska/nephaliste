@@ -29,8 +29,12 @@ import net.miginfocom.swing.MigLayout;
 		private Runnable action;
 		private boolean actionEnabled = true;
 		private boolean empty = true;
+		private boolean baction=false;
 		private JLabel label = new JLabel();
+		private IAppPanel appPanel;
 		private JPanel panel=new JPanel();
+		private ImagePanel imgPanel;
+		private JPanel currentPanel;
 		private JButton extend = new JButton();
 		private int number;
 		private boolean flagextend=false;
@@ -81,9 +85,24 @@ import net.miginfocom.swing.MigLayout;
 
 				@Override
 				public void mouseReleased(MouseEvent e) {
-					if (action != null && actionEnabled) action.run();
-				}
-			});
+					if (action != null && actionEnabled) 
+					{action.run();
+					
+					 remove(currentPanel);
+					 if(baction==true)
+					 {
+						 currentPanel=panel;
+					 }
+					 else
+					 {
+						 currentPanel=imgPanel;
+					 }
+					 add(currentPanel,"w 100%,h 100%");
+					 
+														 
+					}
+				
+			}});
 		
 		
 		//	add(extend);
@@ -109,15 +128,18 @@ import net.miginfocom.swing.MigLayout;
 //			});
 		}
 
-		public void setAction(Runnable action) {this.action = action;}
+		public void setAction(Runnable action) {this.action = action;
+												baction=!baction;}
 		public void enableAction() {actionEnabled = true;}
 		public void disableAction() {actionEnabled = false;}
 		
-		public void makePanel(JPanel pane)
+		public void makePanel(IAppPanel pane)
 		{
 		//	remove(extend);
 			remove(panel);
-			panel=pane;
+			imgPanel=new ImagePanel(pane.getThumbnail());
+			currentPanel = imgPanel;
+			panel=pane.getPanel();
 //			overlay.putConstraint(SpringLayout.NORTH, panel, 0, SpringLayout.NORTH, this);
 //			overlay.putConstraint(SpringLayout.WEST, panel, 0, SpringLayout.WEST, this);
 //			overlay.putConstraint(SpringLayout.SOUTH, panel, 0, SpringLayout.SOUTH, this);
@@ -146,7 +168,8 @@ import net.miginfocom.swing.MigLayout;
 //			}
 //			extend.setVisible(true);
 //			add(extend);
-			add(panel,"w 100%,h 100%");
+			
+			add(imgPanel,"w 100%,h 100%");
 			empty=false;
 			repaint();
 		}

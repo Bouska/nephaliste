@@ -210,7 +210,7 @@ pAction.add( new Runnable(){
 		}
 		
 	}
-	public void addPanel(JPanel pane)
+	public void addPanel(IAppPanel pane)
 	{
 		if(!full)
 		{

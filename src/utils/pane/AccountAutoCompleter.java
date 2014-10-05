@@ -12,6 +12,8 @@ import java.util.regex.Pattern;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.JTextComponent;
 
+import apps.FicheClient;
+
 
 
 
@@ -19,9 +21,11 @@ import javax.swing.text.JTextComponent;
 
 public class AccountAutoCompleter extends AutoCompleter implements MouseListener,MouseMotionListener{ 
 	private ArrayList<String> files=new ArrayList<String>();
- public AccountAutoCompleter(JTextComponent comp,ArrayList<String> file){ 
+	private FicheClient fiche;
+ public AccountAutoCompleter(JTextComponent comp,ArrayList<String> file,FicheClient fiche){ 
      super(comp); 
      files=file;
+     this.fiche=fiche;
      list.addMouseListener(this);
  } 
 
@@ -72,7 +76,8 @@ public class AccountAutoCompleter extends AutoCompleter implements MouseListener
          return; 
 
      textComp.setText(selected);
-    
+     fiche.client=selected;
+     fiche.updateClient(selected);
      list.clearSelection();
      popup.setVisible(false); 
      
@@ -113,9 +118,9 @@ public void mousePressed(MouseEvent e) {
 @Override
 public void mouseReleased(MouseEvent arg0) {
 	acceptedListItem((String) list.getSelectedValue());
+
 	
 }
-
 @Override
 public void mouseDragged(MouseEvent arg0) {
 	// TODO Auto-generated method stub
