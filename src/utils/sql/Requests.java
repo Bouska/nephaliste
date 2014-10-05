@@ -132,10 +132,11 @@ public class Requests {
 		return test;
 	}
 	
-	static public void createNewClient()
-	{
+	static public void createNewClient(String firstName, String surName, String nickName, int promo, boolean coopeman){
+		String request = new String();
 		
 	}
+	
 	static public String getProductId(String product)
 	{
 		String request = "SELECT id FROM recettes WHERE nom = '"+product+"'";
