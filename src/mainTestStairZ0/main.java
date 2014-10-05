@@ -9,11 +9,11 @@ import java.io.IOException;
 import javax.swing.JFrame;
 
 import net.miginfocom.swing.MigLayout;
-import apps.Debiter;
+
 import apps.FicheClient;
 import aurelienribon.slidinglayout.SLAnimator;
 import utils.pane.ChoosingPanel;
-import utils.pane.SearchPanel;
+
 
 
 public class main {
