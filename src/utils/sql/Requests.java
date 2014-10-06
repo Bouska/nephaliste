@@ -149,6 +149,20 @@ public class Requests {
 		ArrayList<String> test = db.readRequest(request);
 		return test.get(0);
 	}
+	static public String getClientPromo(String client)
+	{
+		String request = "SELECT promo FROM comptes WHERE nom = '"+client+"'";
+		ArrayList<String> test = db.readRequest(request);
+		return test.get(0);
+	}
+	static public String getClientCoopeman(String client)
+	{
+		String request = "SELECT coopeman FROM comptes WHERE nom = '"+client+"'";
+		ArrayList<String> test = db.readRequest(request);
+		return test.get(0);
+	}
+	
+	
 	
 
 }
