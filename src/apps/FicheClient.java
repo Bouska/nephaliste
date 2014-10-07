@@ -118,8 +118,6 @@ public class FicheClient extends JPanel {
 	}
 	public void updateClient(String client)
 	{
-<<<<<<< HEAD
-
 		Client.setClient(client);
 		nom.setText(client);
 		this.promo.setText(Client.getPromo());
@@ -142,32 +140,6 @@ public class FicheClient extends JPanel {
 		{
 			this.coopeman.setImage(nonCoopeman_img);
 		}
-=======
-//		String promo =Requests.getClientPromo(client);
-//		String solde = Requests.getClientSolde(client);
-//		String coopeman =Requests.getClientCoopeman(client);
-//		nom.setText(client);
-//		this.promo.setText(promo);
-//		this.solde.setText(solde+" €");
-//		if(Double.parseDouble(solde)<0)
-//		{
-//			this.solde.setBorder(BorderFactory.createLineBorder(Color.red,2));
-//			this.solde.setForeground(Color.red);
-//		}
-//		else
-//		{
-//			this.solde.setBorder(BorderFactory.createLineBorder(Color.green,2));
-//			this.solde.setForeground(Color.green);
-//		}
-//		if(coopeman.equals("1"))
-//		{
-//			this.coopeman.setImage(coopeman_img);
-//		}
-//		else
-//		{
-//			this.coopeman.setImage(nonCoopeman_img);
-//		}
->>>>>>> origin/master
 	}
 
 }
