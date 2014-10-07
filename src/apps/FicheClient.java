@@ -37,18 +37,25 @@ public class FicheClient extends JPanel {
 	private JLabel solde = new JLabel("Solde");
 	private JLabel promo = new JLabel("PROMO");
 	public static String client = "";
-	public FicheClient() throws IOException
-	{
-		loadImages();
+	private FicheClient()
+	{	
+		try {
+			loadImages();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		initComponents();
-		createPanels();
-		
-		
-		
-		
-		
-		
+		createPanels();	
 	}
+	
+	private static class SingletonHolder{
+			public static final FicheClient INSTANCE = new FicheClient();	
+	}
+	public static FicheClient getInstance(){
+		return SingletonHolder.INSTANCE;
+	}
+	
 	private void initComponents()
 	{
 		this.setBackground(new Color(61,61,61));
@@ -111,13 +118,12 @@ public class FicheClient extends JPanel {
 	}
 	public void updateClient(String client)
 	{
-		String promo =Requests.getClientPromo(client);
-		String solde = Requests.getClientSolde(client);
-		String coopeman =Requests.getClientCoope(client);
+
+		Client.setClient(client);
 		nom.setText(client);
-		this.promo.setText(promo);
-		this.solde.setText(solde+" €");
-		if(Double.parseDouble(solde)<0)
+		this.promo.setText(Client.getPromo());
+		this.solde.setText(Client.getSolde()+" €");
+		if(Double.parseDouble(Client.getSolde())<0)
 		{
 			this.solde.setBorder(BorderFactory.createLineBorder(Color.red,2));
 			this.solde.setForeground(Color.red);
@@ -127,7 +133,7 @@ public class FicheClient extends JPanel {
 			this.solde.setBorder(BorderFactory.createLineBorder(Color.green,2));
 			this.solde.setForeground(Color.green);
 		}
-		if(coopeman.equals("1"))
+		if(Client.getCoopeman().equals("1"))
 		{
 			this.coopeman.setImage(coopeman_img);
 		}

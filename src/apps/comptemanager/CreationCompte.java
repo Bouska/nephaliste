@@ -2,13 +2,15 @@ package apps.comptemanager;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 
 import javax.swing.*;
 
+import utils.pane.IAppPanel;
 import utils.sql.Requests;
 import net.miginfocom.swing.MigLayout;
 
-public class CreationCompte extends JPanel implements ActionListener{
+public class CreationCompte extends JPanel implements ActionListener, IAppPanel{
 	
 	private JButton createButton;
 	private JTextField fnameField = new JTextField();
@@ -16,6 +18,7 @@ public class CreationCompte extends JPanel implements ActionListener{
 	private JTextField nnameField = new JTextField();
 	private JTextField promoField = new JTextField();
 	private JCheckBox coopemanCheck = new JCheckBox();
+	private BufferedImage thumbnail;
 	
 	public CreationCompte(){
 		this.setLayout(new MigLayout("insets 0 0 0 0, wrap 2"));
@@ -37,7 +40,7 @@ public class CreationCompte extends JPanel implements ActionListener{
 		
 		createButton = new JButton("Créer le Compte");
 		createButton.addActionListener(this);
-		this.add(createButton, "center");
+		this.add(createButton, "align center");
 	}
 
 	@Override
@@ -47,6 +50,24 @@ public class CreationCompte extends JPanel implements ActionListener{
 			System.out.println("" + fnameField.getText() + "\n" + snameField.getText() + "\n" + nnameField.getText() + "\n" + Integer.parseInt(promoField.getText()) + "\n" + coopemanCheck.isSelected());
 			//Requests.createNewClient(fnameField.getText(),snameField.getText(),nnameField.getText(),Integer.parseInt(promoField.getText()),coopemanCheck.isSelected());
 		}
+	}
+
+	@Override
+	public BufferedImage getThumbnail() {
+		// TODO Auto-generated method stub
+		return this.thumbnail;
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public JPanel getPanel() {
+		// TODO Auto-generated method stub
+		return this;
 	}
 }
 
