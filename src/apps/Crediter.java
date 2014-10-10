@@ -1,27 +1,151 @@
 package apps;
 
+import java.awt.Color;
+import java.awt.ComponentOrientation;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.util.HashMap;
 
 import javax.imageio.ImageIO;
+import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
+import net.miginfocom.swing.MigLayout;
 import utils.pane.IAppPanel;
+import utils.pane.ImageButton;
+import utils.pane.ImagePanel;
+import utils.pane.SemiTransparentTextField;
+import utils.pane.TransparentButton;
 
-public class Crediter extends JPanel implements IAppPanel {
+public class Crediter extends JPanel implements IAppPanel,ActionListener {
 	
+	private JPanel billets= new JPanel();
+	private JPanel pieces = new JPanel();
+	SemiTransparentTextField montant = new SemiTransparentTextField("0.0");
+	private TransparentButton okButton = new TransparentButton("OK");
 	private BufferedImage crediter = null;
+	HashMap<ImageButton,Double> buttons = new HashMap<ImageButton,Double>();
+	
 	public Crediter()
 	{
+		setBackground(new Color(156,203,92));
+		pieces.setBackground(new Color(156,203,92));
+		billets.setBackground(new Color(156,203,92));
 		try {
 			crediter=ImageIO.read(new File("./resources/img/crediter.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		ImagePanel icon = new ImagePanel(crediter);
+		setLayout(new MigLayout());
+		
+		JPanel header = new JPanel();
+		
+		add(header,"w 100%,h 20%,wrap");
+		add(montant,"gapy 2%,align center ,w 60%, h 10%,wrap");
+		add(billets,"gapy 3%,align center, w 35%, h 25%,wrap");
+		add(pieces,"gapy 2%,align center, w 55%, h 15%,wrap");
+		add(okButton,"gapy 3% ,align center, w 20%,h 10%");
+		loadImages();
+		header.setLayout(new MigLayout());
+		header.add(icon,"w 20%,h 100%");
+		header.setBackground(new Color(156,203,92));
+		JLabel label = new JLabel("CREDITER");
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setVerticalAlignment(SwingConstants.CENTER);
+		label.setFont(new Font("Arial",Font.BOLD,80));
+		label.setForeground(new Color(255,255,255,145));
+		header.add(label,"align center,w 80%,h 100%");
+		
+		montant.setComponentOrientation(ComponentOrientation.RIGHT_TO_LEFT);
+		montant.setFont(new Font("Arial",Font.BOLD,60));
+		montant.setBorder(null);
+		montant.setBackground(Color.white);
+		montant.setForeground(new Color(156,203,92));
+		okButton.setBorderPainted(false);
+		okButton.setFont(new Font("Arial",Font.BOLD,60));
+		okButton.setBackground(Color.white);
+		okButton.setForeground(new Color(156,203,92));
 		
 		
+		
+		
+		
+		
+		
+		
+	}
+	private void loadImages()
+	{
+		BufferedImage b5 = null;
+		BufferedImage b10 = null;
+		BufferedImage b20 = null;
+		BufferedImage b50 = null;
+		BufferedImage p10c = null;
+		BufferedImage p20c = null;
+		BufferedImage p50c = null;
+		BufferedImage p1 = null;
+		BufferedImage p2 = null;
+		try {
+			 b5 = ImageIO.read(new File("./resources/img/Billets/5.png"));
+			 b10 = ImageIO.read(new File("./resources/img/Billets/10.png"));
+			 b20 = ImageIO.read(new File("./resources/img/Billets/20.png"));
+			 b50 = ImageIO.read(new File("./resources/img/Billets/50.png"));
+			 p10c = ImageIO.read(new File("./resources/img/Pieces/10c.png"));
+			 p20c = ImageIO.read(new File("./resources/img/Pieces/20c.png"));
+			 p50c = ImageIO.read(new File("./resources/img/Pieces/50c.png"));
+			 p1 = ImageIO.read(new File("./resources/img/Pieces/1.png"));
+			 p2 = ImageIO.read(new File("./resources/img/Pieces/2.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ImageButton ib5 = new ImageButton(b5);
+		ImageButton ib10 = new ImageButton(b10);
+		ImageButton ib20 = new ImageButton(b20);
+		ImageButton ib50 = new ImageButton(b50);
+		ImageButton ip10c = new ImageButton(p10c);
+		ImageButton ip20c = new ImageButton(p20c);
+		ImageButton ip50c = new ImageButton(p50c);
+		ImageButton ip1 = new ImageButton(p1);
+		ImageButton ip2 = new ImageButton(p2);
+		
+		buttons.put(ib5, 5.0);
+		buttons.put(ib10, 10.0);
+		buttons.put(ib20, 20.0);
+		buttons.put(ib50, 50.0);
+		billets.setLayout(new MigLayout());
+		billets.add(ib50,"aligny top,w 25%,h 95%");
+		billets.add(ib20,"aligny top,w 25%, h 90%");
+		billets.add(ib10,"aligny top,w 25%,h 85%");
+		billets.add(ib5,"aligny top,w 25%,h 80%");
+		buttons.put(ip10c, 0.1);
+		buttons.put(ip20c, 0.2);
+		buttons.put(ip50c, 0.5);
+		buttons.put(ip1, 1.0);
+		buttons.put(ip2, 2.0);
+		pieces.setLayout(new MigLayout());
+		pieces.add(ip2,"aligny center,w 20%, h 95%");
+		pieces.add(ip1,"aligny center,w 20%,h 90%");
+		pieces.add(ip50c,"aligny center,w 20%,h 85%");
+		pieces.add(ip20c,"aligny center,w 20%,h 80%");
+		pieces.add(ip10c,"aligny center,w 20%,h 75%");
+		for(ImageButton button : buttons.keySet())
+		{
+			button.setBackground(new Color(156,203,92));
+			button.addActionListener(this);
+		}
+			
 		
 	}
 	@Override
@@ -40,6 +164,16 @@ public class Crediter extends JPanel implements IAppPanel {
 	public JPanel getPanel() {
 		// TODO Auto-generated method stub
 		return this;
+	}
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		Double solde = buttons.get(e.getSource());
+		DecimalFormat formatter = new DecimalFormat("#0.0");
+		DecimalFormatSymbols sym = new DecimalFormatSymbols();
+		sym.setDecimalSeparator('.');
+		formatter.setDecimalFormatSymbols(sym);
+		montant.setText(formatter.format((Double.parseDouble(montant.getText())+solde)).toString());
+		
 	}
 
 }
