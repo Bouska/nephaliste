@@ -1,6 +1,7 @@
 package apps;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -24,6 +25,8 @@ public class Debiter extends JPanel implements IAppPanel{
 	private BufferedImage thumbnail;
 	private PSearchBar search;
 	private ProductPane productPane;
+	private JPanel header = new JPanel();
+	private JScrollPane scrollPane;
 	
 	public Debiter(String img) throws IOException{
 		
@@ -33,8 +36,24 @@ public class Debiter extends JPanel implements IAppPanel{
 		productPane = new ProductPane();
 		this.refreshProductsList();
 		
-		this.add(search,"w 100%, h 20%,wrap");
-		this.add(productPane,"w 100%, h 80%");
+		JLabel label = new JLabel("DEBITER");
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setVerticalAlignment(SwingConstants.CENTER);
+		label.setFont(new Font("Arial",Font.BOLD,80));
+		label.setForeground(new Color(255,255,255,145));
+		header.setBackground(new Color(237,31,36));
+		header.add(label,"align center,w 100%,h 100%");
+		
+		scrollPane = new JScrollPane();
+		scrollPane.setViewportView(productPane);
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+		
+		
+		
+		this.add(header, "w 100%, h 10%, wrap");
+		this.add(search,"gapx 10%, gapy 5%, w 80%, h 20%,wrap");
+		this.add(scrollPane,"gapx 5%, gapy 5%, w 90%, h 50%");
 		search.setBackground(new Color(237,31,36));
 		productPane.setBackground(new Color(237,31,36));
 		this.setBackground(new Color(237,31,36));

@@ -132,9 +132,10 @@ public class Requests {
 		return test;
 	}
 	
-	static public void createNewClient(String firstName, String surName, String nickName, int promo, boolean coopeman){
-		String request = new String();
-		
+	static public void createNewClient(String firstName, String surName, String nickName, int promo, String email){
+		String request = "INSERT INTO comptes (nom, promo, solde, ouvert, coopeman, email)"
+				+ " VALUES ('"+ firstName + " \"" + nickName + "\" " + surName + "'," + promo + ", 0.0 , 1, 0, '" + email +"')";
+		db.writeRequest(request);
 	}
 	
 	static public String getProductId(String product)

@@ -7,48 +7,44 @@ import java.awt.image.BufferedImage;
 import javax.swing.*;
 
 import utils.pane.IAppPanel;
+import utils.pane.SemiTransparentTextField;
 import utils.sql.Requests;
 import net.miginfocom.swing.MigLayout;
 
 public class CreationCompte extends JPanel implements ActionListener, IAppPanel{
 	
 	private JButton createButton;
-	private JTextField fnameField = new JTextField();
-	private JTextField snameField = new JTextField();
-	private JTextField nnameField = new JTextField();
-	private JTextField promoField = new JTextField();
-	private JCheckBox coopemanCheck = new JCheckBox();
+	private SemiTransparentTextField fnameField = new SemiTransparentTextField("Prénom");
+	private SemiTransparentTextField snameField = new SemiTransparentTextField("Surnom");
+	private SemiTransparentTextField nnameField = new SemiTransparentTextField("Nom");
+	private SemiTransparentTextField promoField = new SemiTransparentTextField("Promo");
+	private SemiTransparentTextField emailField = new SemiTransparentTextField("E-Mail");
+
 	private BufferedImage thumbnail;
 	
 	public CreationCompte(){
-		this.setLayout(new MigLayout("insets 0 0 0 0, wrap 2"));
+		this.setLayout(new MigLayout("insets 0 0 0 0"));
 		
-		this.add(new JLabel("Prenom : "),"h 10%, w 30%");
-		this.add(fnameField, "h 10%, w 70%");
+		this.add(fnameField, "gapx 15%, gapy 2%, align center,h 15%, w 70%, wrap");
 		
-		this.add(new JLabel("Surnom : "),"h 10%, w 30%");
-		this.add(nnameField, "h 10%, w 70%");
+		this.add(nnameField, "gapx 15%,align center,h 15%, w 70%, wrap");
 		
-		this.add(new JLabel("Nom : "),"h 10%, w 30%");
-		this.add(snameField, "h 10%, w 70%");
+		this.add(snameField, "gapx 15%,align center,h 15%, w 70%, wrap");
 		
-		this.add(new JLabel("Promo : "),"h 10%, w 30%");
-		this.add(promoField, "h 10%, w 70%");
+		this.add(promoField, "gapx 15%,align center,h 15%, w 70%, wrap");
 		
-		this.add(new JLabel("Coopeman : "), "h 10%, w 30%");
-		this.add(coopemanCheck, "h 10%, w 70%");
+		this.add(emailField, "gapx 15%,align center,h 15%, w 70%, wrap");
 		
 		createButton = new JButton("Créer le Compte");
 		createButton.addActionListener(this);
-		this.add(createButton, "align center");
+		this.add(createButton, "gapx 25%, gapy 2% , h 10%, w 50%");
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
 		if(arg0.getSource() == createButton){
-			System.out.println("" + fnameField.getText() + "\n" + snameField.getText() + "\n" + nnameField.getText() + "\n" + Integer.parseInt(promoField.getText()) + "\n" + coopemanCheck.isSelected());
-			//Requests.createNewClient(fnameField.getText(),snameField.getText(),nnameField.getText(),Integer.parseInt(promoField.getText()),coopemanCheck.isSelected());
+			Requests.createNewClient(fnameField.getText(),snameField.getText(),nnameField.getText(),Integer.parseInt(promoField.getText()), emailField.getText());
 		}
 	}
 
