@@ -20,6 +20,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import net.miginfocom.swing.MigLayout;
+import utils.pane.Colors;
 import utils.pane.IAppPanel;
 import utils.pane.ImageButton;
 import utils.pane.ImagePanel;
@@ -34,20 +35,24 @@ public class Crediter extends JPanel implements IAppPanel,ActionListener {
 	SemiTransparentTextField montant = new SemiTransparentTextField("0.0");
 	private TransparentButton okButton = new TransparentButton("OK");
 	private BufferedImage crediter = null;
+	private BufferedImage crediterHeader = null;
+	private ImageButton returnButton ;
 	HashMap<ImageButton,Double> buttons = new HashMap<ImageButton,Double>();
 	
 	public Crediter()
 	{
-		setBackground(new Color(156,203,92));
-		pieces.setBackground(new Color(156,203,92));
-		billets.setBackground(new Color(156,203,92));
+		setBackground(Colors.green);
+		pieces.setBackground(Colors.green);
+		billets.setBackground(Colors.green);
 		try {
+			
 			crediter=ImageIO.read(new File("./resources/img/crediter.png"));
+			crediterHeader=ImageIO.read(new File("./resources/img/headers/crediter.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		ImagePanel icon = new ImagePanel(crediter);
+		returnButton = new ImageButton(crediterHeader);
 		setLayout(new MigLayout());
 		
 		JPanel header = new JPanel();
@@ -55,12 +60,12 @@ public class Crediter extends JPanel implements IAppPanel,ActionListener {
 		add(header,"w 100%,h 20%,wrap");
 		add(montant,"gapy 2%,align center ,w 60%, h 10%,wrap");
 		add(billets,"gapy 3%,align center, w 35%, h 25%,wrap");
-		add(pieces,"gapy 2%,align center, w 55%, h 15%,wrap");
+		add(pieces,"gapy 2%,align center, w 60%, h 15%,wrap");
 		add(okButton,"gapy 3% ,align center, w 20%,h 10%");
 		loadImages();
 		header.setLayout(new MigLayout());
-		header.add(icon,"w 20%,h 100%");
-		header.setBackground(new Color(156,203,92));
+		header.add(returnButton,"w 20%,h 100%");
+		header.setBackground(Colors.green);
 		JLabel label = new JLabel("CREDITER");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setVerticalAlignment(SwingConstants.CENTER);
@@ -72,11 +77,11 @@ public class Crediter extends JPanel implements IAppPanel,ActionListener {
 		montant.setFont(new Font("Arial",Font.BOLD,60));
 		montant.setBorder(null);
 		montant.setBackground(Color.white);
-		montant.setForeground(new Color(156,203,92));
+		montant.setForeground(Colors.green);
 		okButton.setBorderPainted(false);
 		okButton.setFont(new Font("Arial",Font.BOLD,60));
 		okButton.setBackground(Color.white);
-		okButton.setForeground(new Color(156,203,92));
+		okButton.setForeground(Colors.green);
 		okButton.addActionListener(this);
 		
 		
@@ -143,7 +148,7 @@ public class Crediter extends JPanel implements IAppPanel,ActionListener {
 		pieces.add(ip10c,"aligny center,w 20%,h 75%");
 		for(ImageButton button : buttons.keySet())
 		{
-			button.setBackground(new Color(156,203,92));
+			button.setBackground(Colors.green);
 			button.addActionListener(this);
 		}
 			
@@ -151,19 +156,15 @@ public class Crediter extends JPanel implements IAppPanel,ActionListener {
 	}
 	@Override
 	public BufferedImage getThumbnail() {
-		// TODO Auto-generated method stub
 		return crediter;
 	}
 
 	@Override
 	public void update() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
 	public JPanel getPanel() {
-		// TODO Auto-generated method stub
 		return this;
 	}
 	@Override
@@ -190,6 +191,11 @@ public class Crediter extends JPanel implements IAppPanel,ActionListener {
 		formatter.setDecimalFormatSymbols(sym);
 		montant.setText(formatter.format((Double.parseDouble(montant.getText())+solde)).toString());
 		}
+	}
+	@Override
+	public JButton getReturnButton() {
+		
+		return returnButton;
 	}
 
 }

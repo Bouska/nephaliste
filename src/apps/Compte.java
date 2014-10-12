@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
@@ -62,5 +63,11 @@ public class Compte extends JPanel implements IAppPanel{
 	public JPanel getPanel() {
 		// TODO Auto-generated method stub
 		return this;
+	}
+
+	@Override
+	public JButton getReturnButton() {
+		// TODO Auto-generated method stub
+		return new JButton();
 	}
 }

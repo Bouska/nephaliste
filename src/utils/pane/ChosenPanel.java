@@ -85,24 +85,18 @@ import net.miginfocom.swing.MigLayout;
 
 				@Override
 				public void mouseReleased(MouseEvent e) {
-					if (action != null && actionEnabled) 
+					if (action != null && actionEnabled&&baction==true) 
 					{action.run();
 					 
 					 remove(currentPanel);
-					 if(baction==true)
-					 {
-						 currentPanel=panel;
-					 }
-					 else
-					 {
-						 currentPanel=imgPanel;
-					 }
+					 currentPanel=panel;
 					 add(currentPanel,"w 100%,h 100%");
 					 
 														 
 					}
 				
 			}});
+			
 		
 		
 		//	add(extend);
@@ -136,6 +130,7 @@ import net.miginfocom.swing.MigLayout;
 		public void makePanel(IAppPanel pane)
 		{
 		//	remove(extend);
+			appPanel=pane;
 			remove(panel);
 			imgPanel=new ImagePanel(pane.getThumbnail());
 			currentPanel = imgPanel;
@@ -172,6 +167,20 @@ import net.miginfocom.swing.MigLayout;
 			add(imgPanel,"w 100%,h 100%");
 			empty=false;
 			repaint();
+			appPanel.getReturnButton().addActionListener(new ActionListener(){
+
+				@Override
+				public void actionPerformed(ActionEvent arg0) {
+					if(action!=null&&actionEnabled)
+					{
+						action.run();
+						remove(currentPanel);
+						 currentPanel=imgPanel;
+						 add(currentPanel,"w 100%,h 100%");
+					}
+				}
+				
+			});
 		}
 		public boolean isEmpty()
 		{

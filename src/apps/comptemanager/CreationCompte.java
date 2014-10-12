@@ -65,5 +65,11 @@ public class CreationCompte extends JPanel implements ActionListener, IAppPanel{
 		// TODO Auto-generated method stub
 		return this;
 	}
+
+	@Override
+	public JButton getReturnButton() {
+		// TODO Auto-generated method stub
+		return new JButton();
+	}
 }
 
