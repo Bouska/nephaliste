@@ -1,5 +1,6 @@
 package apps.debiter;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 
 import javax.swing.*;
@@ -26,6 +27,7 @@ public class LetterButton extends JCheckBox{
 		g.setColor(color);
 		g.fillRect(0, 0, this.getWidth(), this.getHeight());
 		g.setColor(Color.white);
+		g.setFont(new Font("Arial",Font.BOLD,20));
 		g.drawString(this.getText(), this.getWidth()/2-g.getFont().getSize()/2, this.getHeight()/2+g.getFont().getSize()/2);
 		
 			

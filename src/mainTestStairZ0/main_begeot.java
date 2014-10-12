@@ -33,8 +33,9 @@ public class main_begeot {
 		test.setShape(new RoundRectangle2D.Double(0, 0, 1000, 750, 15, 15));
 		test.setSize(new Dimension(1000,750));
 		
-		pane.addPanel(new Debiter("./resources/img/debiter.png"));
-		pane.addPanel(new Compte("./resources/img/comptes.png"));
+		pane.addPanel(new Debiter());
+		
+		pane.addPanel(new Compte());
 		test.getContentPane().setLayout(new MigLayout("insets 0 0 0 0"));
 		test.getContentPane().add(pane,"w 75%,h 100%");
 		test.getContentPane().add(FicheClient.getInstance(),"w 25%,h 100%");
@@ -46,7 +47,7 @@ public class main_begeot {
 		test.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		test.setLocationRelativeTo(null);
 		test.setVisible(true);
-
+		
 	}
 
 }

@@ -15,6 +15,7 @@ import apps.debiter.PSearchBar;
 import apps.debiter.ProductButton;
 import apps.debiter.ProductPane;
 import utils.pane.IAppPanel;
+import utils.pane.SemiTransparentScrollBar;
 import utils.sql.Requests;
 import net.miginfocom.swing.MigLayout;
 
@@ -28,9 +29,15 @@ public class Debiter extends JPanel implements IAppPanel{
 	private JPanel header = new JPanel();
 	private JScrollPane scrollPane;
 	
-	public Debiter(String img) throws IOException{
+	public Debiter(){
 		
-		this.thumbnail = ImageIO.read(new File(img));
+		
+		try {
+			this.thumbnail=ImageIO.read(new File("./resources/img/debiter.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		this.setLayout(new MigLayout("insets 0 0 0 0, wrap"));
 		search = new PSearchBar(this);
 		productPane = new ProductPane();
@@ -48,7 +55,8 @@ public class Debiter extends JPanel implements IAppPanel{
 		scrollPane.setViewportView(productPane);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
-		
+		scrollPane.setBorder(null);
+		scrollPane.getVerticalScrollBar().setUI(new SemiTransparentScrollBar(new Color(237,31,36)));
 		
 		
 		this.add(header, "w 100%, h 10%, wrap");

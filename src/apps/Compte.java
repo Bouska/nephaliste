@@ -21,9 +21,14 @@ public class Compte extends JPanel implements IAppPanel{
 	private ChoosingPanel cpane = new ChoosingPanel(1,2);
 	private BufferedImage thumbnail;
 	private JPanel header = new JPanel();
-	public Compte(String img) throws IOException{
+	public Compte(){
 		
-		this.thumbnail = ImageIO.read(new File(img));
+		try {
+			this.thumbnail=ImageIO.read(new File("./resources/img/comptes.png"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		this.setLayout(new MigLayout("insets 0 0 0 0"));
 		
 
