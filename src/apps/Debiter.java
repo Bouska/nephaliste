@@ -54,14 +54,14 @@ public class Debiter extends JPanel implements IAppPanel{
 		scrollPane = new JScrollPane();
 		scrollPane.setViewportView(productPane);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_AS_NEEDED);
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setBorder(null);
 		scrollPane.getVerticalScrollBar().setUI(new SemiTransparentScrollBar(new Color(237,31,36)));
 		
 		
 		this.add(header, "w 100%, h 10%, wrap");
-		this.add(search,"gapx 10%, gapy 5%, w 80%, h 20%,wrap");
-		this.add(scrollPane,"gapx 5%, gapy 5%, w 90%, h 50%");
+		this.add(search,"gapx 10%, gapy 5%, w 80%, h 15%,wrap");
+		this.add(scrollPane,"gapx 7%, gapy 5%, w 90%, h 55%");
 		search.setBackground(new Color(237,31,36));
 		productPane.setBackground(new Color(237,31,36));
 		this.setBackground(new Color(237,31,36));

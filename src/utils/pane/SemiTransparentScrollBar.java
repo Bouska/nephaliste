@@ -16,15 +16,15 @@ public class SemiTransparentScrollBar extends BasicScrollBarUI {
 	public Color background;
 	public SemiTransparentScrollBar(Color color){
 		background = color;
-		this.trackColor = background;
-		this.trackHighlightColor = background;
+		this.trackColor = background.darker();
+		this.trackHighlightColor = background.darker();
 	}
 	
 	
 	@Override
 	protected void configureScrollBarColors(){
-		this.thumbColor = new Color(0,0,0);
-		this.thumbHighlightColor = new Color(0,0,0);
+		this.thumbColor = new Color(255,255,255);
+		this.thumbHighlightColor = new Color(255,255,255);
 
 	}
 	
@@ -53,7 +53,7 @@ public class SemiTransparentScrollBar extends BasicScrollBarUI {
 	@Override
 	protected void paintThumb(Graphics g, JComponent c, Rectangle thumbBounds){
         Graphics2D g2d = (Graphics2D) g.create();
-        g2d.setComposite(AlphaComposite.SrcOver.derive(0.40f));
+        g2d.setComposite(AlphaComposite.SrcOver.derive(0.60f));
         super.paintThumb(g2d,c,thumbBounds);
         g2d.dispose();
 	}
