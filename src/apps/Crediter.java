@@ -25,6 +25,7 @@ import utils.pane.ImageButton;
 import utils.pane.ImagePanel;
 import utils.pane.SemiTransparentTextField;
 import utils.pane.TransparentButton;
+import utils.sql.Requests;
 
 public class Crediter extends JPanel implements IAppPanel,ActionListener {
 	
@@ -76,7 +77,7 @@ public class Crediter extends JPanel implements IAppPanel,ActionListener {
 		okButton.setFont(new Font("Arial",Font.BOLD,60));
 		okButton.setBackground(Color.white);
 		okButton.setForeground(new Color(156,203,92));
-		
+		okButton.addActionListener(this);
 		
 		
 		
@@ -167,13 +168,28 @@ public class Crediter extends JPanel implements IAppPanel,ActionListener {
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
+		if(e.getSource()==okButton)
+		{	if(Client.isInit())
+		{
+			double oldSolde = Double.parseDouble(Requests.getClientSolde(Client.getNom()));
+			double montant = Double.parseDouble(this.montant.getText());
+			double newSolde = oldSolde+montant;
+		    Requests.setClientSolde(Client.getNom(),String.valueOf(newSolde ));
+		}
+			montant.setText("0.0");
+		}
+		else
+		{
+			
+		
 		Double solde = buttons.get(e.getSource());
 		DecimalFormat formatter = new DecimalFormat("#0.0");
 		DecimalFormatSymbols sym = new DecimalFormatSymbols();
 		sym.setDecimalSeparator('.');
 		formatter.setDecimalFormatSymbols(sym);
 		montant.setText(formatter.format((Double.parseDouble(montant.getText())+solde)).toString());
-		
+		}
 	}
 
 }

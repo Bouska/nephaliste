@@ -87,7 +87,7 @@ import net.miginfocom.swing.MigLayout;
 				public void mouseReleased(MouseEvent e) {
 					if (action != null && actionEnabled) 
 					{action.run();
-					
+					 
 					 remove(currentPanel);
 					 if(baction==true)
 					 {

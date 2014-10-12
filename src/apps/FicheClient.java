@@ -76,7 +76,7 @@ public class FicheClient extends JPanel {
 		
 		
 		
-		
+		textSearch.setBorder(null);
 		search = new ImagePanel(search_img);
 		coopeman = new ImagePanel(nonCoopeman_img);
 		names = database.readRequest("SELECT nom FROM comptes WHERE promo > 2011 AND ouvert=1");
