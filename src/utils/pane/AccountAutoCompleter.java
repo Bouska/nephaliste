@@ -93,6 +93,11 @@ public class AccountAutoCompleter extends AutoCompleter implements MouseListener
 //         e.printStackTrace(); 
 //     } 
  }
+ 
+public void updateFiles(ArrayList<String> file){
+	this.files = file;
+	updateListData();
+}
 
 @Override
 public void mouseEntered(MouseEvent arg0) {

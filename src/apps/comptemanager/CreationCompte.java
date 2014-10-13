@@ -13,6 +13,7 @@ import javax.imageio.ImageIO;
 import javax.swing.*;
 
 import apps.Compte;
+import apps.FicheClient;
 import utils.pane.Colors;
 import utils.pane.ImageButton;
 import utils.pane.SemiTransparentTextField;
@@ -32,6 +33,7 @@ public class CreationCompte extends JPanel implements ActionListener{
 	private BufferedImage thumbnail;
 	private BufferedImage createImage;
 	private ImageButton returnButton;
+	private FicheClient fc;
 	
 	private static final String MAINPANEL = "mainComptes";
 
@@ -96,6 +98,8 @@ public class CreationCompte extends JPanel implements ActionListener{
 		// TODO Auto-generated method stub
 		if(arg0.getSource() == createButton){
 			Requests.createNewClient(fnameField.getText(),snameField.getText(),nnameField.getText(),Integer.parseInt(promoField.getText()), emailField.getText());
+			fc = FicheClient.getInstance();
+			fc.updateAutocompleter();
 		}
 		else if(arg0.getSource() == returnButton){
 			CardLayout cl = (CardLayout)this.parent.getLayout();
