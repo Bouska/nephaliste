@@ -1,7 +1,10 @@
 package apps;
 
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -12,39 +15,79 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import apps.comptemanager.CreationCompte;
+import apps.comptemanager.*;
 import net.miginfocom.swing.MigLayout;
-import utils.pane.ChoosingPanel;
+import utils.pane.Colors;
 import utils.pane.IAppPanel;
+import utils.pane.ImageButton;
 
-public class Compte extends JPanel implements IAppPanel{
+public class Compte extends JPanel implements IAppPanel,ActionListener{
 	
-	private ChoosingPanel cpane = new ChoosingPanel(1,2);
-	private BufferedImage thumbnail;
+	private JPanel cpane = new JPanel();
+	private JPanel bpane = new JPanel();
 	private JPanel header = new JPanel();
+	
+	private BufferedImage thumbnail;
+	private BufferedImage compteHeader;
+	private BufferedImage createImage;
+	private BufferedImage updateImage;
+	
+	private ImageButton createButton;
+	private ImageButton updateButton;
+	private ImageButton returnButton;
+	
+	private static final String MAINPANEL = "mainComptes";
+	private static final String CREATEPANEL = "createComptes";
+	private static final String UPDATEPANEL = "updatePanel";
+	
+	
 	public Compte(){
 		
 		try {
+			this.createImage = ImageIO.read(new File("./resources/img/comptes/creation.png"));
+			this.updateImage = ImageIO.read(new File("./resources/img/comptes/creation.png"));
+			this.createImage = ImageIO.read(new File("./resources/img/comptes/creation.png"));
+			this.compteHeader = ImageIO.read(new File("./resources/img/comptes.png"));
 			this.thumbnail=ImageIO.read(new File("./resources/img/comptes.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		this.setLayout(new MigLayout("insets 0 0 0 0"));
 		
-
+		cpane.setLayout(new MigLayout("insets 0 0 0 0"));
+		bpane.setLayout(new MigLayout("insets 0 0 0 0"));
+		this.setLayout(new CardLayout());
+		
+		createButton = new ImageButton(createImage);
+		createButton.setText(CREATEPANEL);
+		createButton.addActionListener(this);
+		updateButton = new ImageButton(updateImage);
+		updateButton.setText(UPDATEPANEL);
+		updateButton.addActionListener(this);
+		
+		returnButton = new ImageButton(compteHeader);
 		
 		header.setLayout(new MigLayout());
-		//header.setBackground(new Color(156,203,92));
 		JLabel label = new JLabel("COMPTES");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setVerticalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("Arial",Font.BOLD,80));
 		label.setForeground(new Color(255,255,255,145));
-		header.add(label,"align center,w 100%,h 100%");
-		cpane.addPanel(new CreationCompte());
-		this.add(header, "w 100%, h 10%, wrap");
-		this.add(cpane,"gapy 10%, gapx 10%, h 50%, w 80%");
+		
+		header.setBackground(Colors.lightBlue);
+		header.add(returnButton,"w 20%, h 100%");
+		header.add(label,"align center,w 60%,h 100%");
+		
+		cpane.setBackground(Colors.lightBlue);
+		cpane.add(header, "w 100%, h 20%, wrap");
+		bpane.add(createButton, "gapx 25%, gapy 35%, w 24%, h 30%");
+		bpane.add(updateButton, "gapx 2%, w 24%, h 30%");
+		bpane.setBackground(Colors.lightBlue);
+		
+		cpane.add(bpane, "w 100%, h 80%");
+		this.add(cpane,MAINPANEL);
+		this.add(new CreationCompte(this), CREATEPANEL);
+		this.add(new UpdateCompte(), UPDATEPANEL);
 	}
 
 	@Override
@@ -68,6 +111,18 @@ public class Compte extends JPanel implements IAppPanel{
 	@Override
 	public JButton getReturnButton() {
 		// TODO Auto-generated method stub
-		return new JButton();
+		return returnButton;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		CardLayout cl = (CardLayout)this.getLayout();
+		if(arg0.getSource() == createButton){
+			cl.show(this, CREATEPANEL);
+		}
+		else if(arg0.getSource() == updateButton){
+			cl.show(this, UPDATEPANEL);
+		}
 	}
 }

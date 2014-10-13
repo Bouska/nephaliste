@@ -32,6 +32,7 @@ public class Debiter extends JPanel implements IAppPanel{
 	private JScrollPane scrollPane;
 	private BufferedImage debiterHeader;
 	private ImageButton returnButton;
+	
 	public Debiter(){
 		
 		
