@@ -47,7 +47,7 @@ public class Compte extends JPanel implements IAppPanel,ActionListener{
 			this.createImage = ImageIO.read(new File("./resources/img/comptes/creation.png"));
 			this.updateImage = ImageIO.read(new File("./resources/img/comptes/creation.png"));
 			this.createImage = ImageIO.read(new File("./resources/img/comptes/creation.png"));
-			this.compteHeader = ImageIO.read(new File("./resources/img/comptes.png"));
+			this.compteHeader = ImageIO.read(new File("./resources/img/headers/comptes.png"));
 			this.thumbnail=ImageIO.read(new File("./resources/img/comptes.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -80,8 +80,8 @@ public class Compte extends JPanel implements IAppPanel,ActionListener{
 		
 		cpane.setBackground(Colors.lightBlue);
 		cpane.add(header, "w 100%, h 20%, wrap");
-		bpane.add(createButton, "gapx 25%, gapy 35%, w 24%, h 30%");
-		bpane.add(updateButton, "gapx 2%, w 24%, h 30%");
+		bpane.add(createButton, "gapx 20%, gapy 30%, w 32%, h 40%");
+		bpane.add(updateButton, "gapx 2%, w 32%, h 40%");
 		bpane.setBackground(Colors.lightBlue);
 		
 		cpane.add(bpane, "w 100%, h 80%");

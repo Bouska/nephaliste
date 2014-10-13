@@ -141,6 +141,7 @@ public class FicheClient extends JPanel {
 			this.coopeman.setImage(nonCoopeman_img);
 		}
 	}
+	
 	public void updateAutocompleter(){
 		names = database.readRequest("SELECT nom FROM comptes WHERE promo > 2011 AND ouvert=1");
 		autocompleter.updateFiles(names);

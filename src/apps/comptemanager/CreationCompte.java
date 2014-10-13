@@ -14,15 +14,13 @@ import javax.swing.*;
 
 import apps.Compte;
 import apps.FicheClient;
-import utils.pane.Colors;
-import utils.pane.ImageButton;
-import utils.pane.SemiTransparentTextField;
+import utils.pane.*;
 import utils.sql.Requests;
 import net.miginfocom.swing.MigLayout;
 
 public class CreationCompte extends JPanel implements ActionListener{
 	
-	private JButton createButton;
+	private TransparentButton createButton;
 	private JPanel header = new JPanel();
 	private SemiTransparentTextField fnameField = new SemiTransparentTextField("Prénom");
 	private SemiTransparentTextField snameField = new SemiTransparentTextField("Surnom");
@@ -40,7 +38,7 @@ public class CreationCompte extends JPanel implements ActionListener{
 	public CreationCompte(Compte parent){
 		
 		try {
-			this.createImage = ImageIO.read(new File("./resources/img/comptes/creation.png"));
+			this.createImage = ImageIO.read(new File("./resources/img/comptes/headers/creation.png"));
 			this.thumbnail=ImageIO.read(new File("./resources/img/comptes.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -87,7 +85,11 @@ public class CreationCompte extends JPanel implements ActionListener{
 		emailField.setBackground(Color.white);
 		this.add(emailField, "align center,h 10%, w 70%, wrap");
 		
-		createButton = new JButton("Créer le Compte");
+		createButton = new TransparentButton("Créer le Compte");
+		createButton.setBorderPainted(false);
+		createButton.setFont(new Font("Arial",Font.BOLD,30));
+		createButton.setBackground(Color.white);
+		createButton.setForeground(Colors.blue);
 		createButton.addActionListener(this);
 		this.add(createButton, "gapx 25%, gapy 2% , h 10%, w 50%");
 		this.setBackground(Colors.blue);
