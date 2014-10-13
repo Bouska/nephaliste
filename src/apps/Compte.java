@@ -40,12 +40,13 @@ public class Compte extends JPanel implements IAppPanel,ActionListener{
 	private static final String CREATEPANEL = "createComptes";
 	private static final String UPDATEPANEL = "updatePanel";
 	
+	private CreationCompte createCompte;
+	private UpdateCompte updateCompte;
 	
-	public Compte(){
+	private Compte(){
 		
 		try {
-			this.createImage = ImageIO.read(new File("./resources/img/comptes/creation.png"));
-			this.updateImage = ImageIO.read(new File("./resources/img/comptes/creation.png"));
+			this.updateImage = ImageIO.read(new File("./resources/img/comptes/gestion.png"));
 			this.createImage = ImageIO.read(new File("./resources/img/comptes/creation.png"));
 			this.compteHeader = ImageIO.read(new File("./resources/img/headers/comptes.png"));
 			this.thumbnail=ImageIO.read(new File("./resources/img/comptes.png"));
@@ -53,7 +54,7 @@ public class Compte extends JPanel implements IAppPanel,ActionListener{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+			
 		cpane.setLayout(new MigLayout("insets 0 0 0 0"));
 		bpane.setLayout(new MigLayout("insets 0 0 0 0"));
 		this.setLayout(new CardLayout());
@@ -80,15 +81,23 @@ public class Compte extends JPanel implements IAppPanel,ActionListener{
 		
 		cpane.setBackground(Colors.lightBlue);
 		cpane.add(header, "w 100%, h 20%, wrap");
-		bpane.add(createButton, "gapx 20%, gapy 30%, w 32%, h 40%");
-		bpane.add(updateButton, "gapx 2%, w 32%, h 40%");
+		bpane.add(createButton, "gapx 15%, gapy 30%, w 32%, h 40%");
+		bpane.add(updateButton, "gapx 6%, w 32%, h 40%");
 		bpane.setBackground(Colors.lightBlue);
 		
 		cpane.add(bpane, "w 100%, h 80%");
 		this.add(cpane,MAINPANEL);
-		this.add(new CreationCompte(this), CREATEPANEL);
-		this.add(new UpdateCompte(), UPDATEPANEL);
+		this.add(createCompte = new CreationCompte(), CREATEPANEL);
+		this.add(updateCompte = new UpdateCompte(), UPDATEPANEL);
 	}
+	
+	private static class SingletonHolder{
+		public static final Compte INSTANCE = new Compte();	
+	}
+	public static Compte getInstance(){
+		return SingletonHolder.INSTANCE;
+	}
+	
 
 	@Override
 	public BufferedImage getThumbnail() {
@@ -113,6 +122,11 @@ public class Compte extends JPanel implements IAppPanel,ActionListener{
 		// TODO Auto-generated method stub
 		return returnButton;
 	}
+	
+	public UpdateCompte getUpdateComptePanel(){
+		return updateCompte;
+	}
+	
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
@@ -121,7 +135,7 @@ public class Compte extends JPanel implements IAppPanel,ActionListener{
 		if(arg0.getSource() == createButton){
 			cl.show(this, CREATEPANEL);
 		}
-		else if(arg0.getSource() == updateButton){
+		else if(arg0.getSource() == updateButton){ 
 			cl.show(this, UPDATEPANEL);
 		}
 	}

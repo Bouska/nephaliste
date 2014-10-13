@@ -7,6 +7,7 @@ public class Client {
 	private static String solde;
 	private static String coopeman;
 	private static String promo;
+	private static String email;
 	private static boolean init;
 	
 	public Client(){
@@ -14,6 +15,7 @@ public class Client {
 		solde = "";
 		coopeman = "";
 		promo = "";
+		email = "";
 		init = false;
 	}
 	
@@ -22,6 +24,7 @@ public class Client {
 		promo =Requests.getClientPromo(client);
 		solde = Requests.getClientSolde(client);
 		coopeman =Requests.getClientCoope(client);
+		email = Requests.getClientEmail(client);
 		init = true;
 	}
 	
@@ -40,4 +43,7 @@ public class Client {
 	public static String getNom(){
 		return nom;
 	}
-}
+	public static String getEmail(){
+		return email;
+	}
+}	

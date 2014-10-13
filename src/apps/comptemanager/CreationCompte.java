@@ -27,24 +27,20 @@ public class CreationCompte extends JPanel implements ActionListener{
 	private SemiTransparentTextField nnameField = new SemiTransparentTextField("Nom");
 	private SemiTransparentTextField promoField = new SemiTransparentTextField("Promo");
 	private SemiTransparentTextField emailField = new SemiTransparentTextField("E-Mail");
-	private Compte parent;
-	private BufferedImage thumbnail;
 	private BufferedImage createImage;
 	private ImageButton returnButton;
 	private FicheClient fc;
 	
 	private static final String MAINPANEL = "mainComptes";
 
-	public CreationCompte(Compte parent){
+	public CreationCompte(){
 		
 		try {
 			this.createImage = ImageIO.read(new File("./resources/img/comptes/headers/creation.png"));
-			this.thumbnail=ImageIO.read(new File("./resources/img/comptes.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		this.parent = parent;
 		
 		returnButton = new ImageButton(createImage);
 		returnButton.addActionListener(this);
@@ -71,19 +67,19 @@ public class CreationCompte extends JPanel implements ActionListener{
 		nnameField.setBorder(null);		
 		nnameField.setFont(new Font("Arial",Font.BOLD,20));
 		nnameField.setBackground(Color.white);
-		this.add(nnameField, "align center,h 10%, w 70%, wrap");
+		this.add(nnameField, "gapy 1%, align center,h 10%, w 70%, wrap");
 		snameField.setBorder(null);
 		snameField.setFont(new Font("Arial",Font.BOLD,20));
 		snameField.setBackground(Color.white);
-		this.add(snameField, "align center,h 10%, w 70%, wrap");
+		this.add(snameField, "gapy 1%, align center,h 10%, w 70%, wrap");
 		promoField.setBorder(null);
 		promoField.setFont(new Font("Arial",Font.BOLD,20));
 		promoField.setBackground(Color.white);
-		this.add(promoField, "align center,h 10%, w 70%, wrap");
+		this.add(promoField, "gapy 1%, align center,h 10%, w 70%, wrap");
 		emailField.setBorder(null);
 		emailField.setFont(new Font("Arial",Font.BOLD,20));
 		emailField.setBackground(Color.white);
-		this.add(emailField, "align center,h 10%, w 70%, wrap");
+		this.add(emailField, "gapy 1%, align center,h 10%, w 70%, wrap");
 		
 		createButton = new TransparentButton("Créer le Compte");
 		createButton.setBorderPainted(false);
@@ -104,8 +100,8 @@ public class CreationCompte extends JPanel implements ActionListener{
 			fc.updateAutocompleter();
 		}
 		else if(arg0.getSource() == returnButton){
-			CardLayout cl = (CardLayout)this.parent.getLayout();
-			cl.show(this.parent, MAINPANEL);
+			CardLayout cl = (CardLayout)Compte.getInstance().getLayout();
+			cl.show(Compte.getInstance(), MAINPANEL);
 		}
 	}
 }

@@ -140,6 +140,7 @@ public class FicheClient extends JPanel {
 		{
 			this.coopeman.setImage(nonCoopeman_img);
 		}
+		Compte.getInstance().getUpdateComptePanel().update();
 	}
 	
 	public void updateAutocompleter(){

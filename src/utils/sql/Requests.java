@@ -163,6 +163,12 @@ public class Requests {
 		return test.get(0);
 	}
 	
+	static public String getClientEmail(String client)
+	{
+		String request = "SELECT email FROM comptes WHERE nom = '"+client+"'";
+		ArrayList<String> test = db.readRequest(request);
+		return test.get(0);
+	}
 	
 	
 	static public String getClientName(String id)
