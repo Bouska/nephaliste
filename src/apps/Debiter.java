@@ -14,7 +14,9 @@ import javax.swing.*;
 import apps.debiter.PSearchBar;
 import apps.debiter.ProductButton;
 import apps.debiter.ProductPane;
+import utils.pane.Colors;
 import utils.pane.IAppPanel;
+import utils.pane.ImageButton;
 import utils.pane.SemiTransparentScrollBar;
 import utils.sql.Requests;
 import net.miginfocom.swing.MigLayout;
@@ -28,16 +30,21 @@ public class Debiter extends JPanel implements IAppPanel{
 	private ProductPane productPane;
 	private JPanel header = new JPanel();
 	private JScrollPane scrollPane;
-	
+	private BufferedImage debiterHeader;
+	private ImageButton returnButton;
 	public Debiter(){
 		
 		
 		try {
+			debiterHeader=ImageIO.read(new File("./resources/img/headers/debiter.png"));
 			this.thumbnail=ImageIO.read(new File("./resources/img/debiter.png"));
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		returnButton = new ImageButton(debiterHeader);
+
 		this.setLayout(new MigLayout("insets 0 0 0 0, wrap"));
 		search = new PSearchBar(this);
 		productPane = new ProductPane();
@@ -48,23 +55,27 @@ public class Debiter extends JPanel implements IAppPanel{
 		label.setVerticalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("Arial",Font.BOLD,80));
 		label.setForeground(new Color(255,255,255,145));
-		header.setBackground(new Color(237,31,36));
-		header.add(label,"align center,w 100%,h 100%");
+		header.setBackground(Colors.red);
+		header.setLayout(new MigLayout());
+		header.add(returnButton,"w 20%, h 100%");
+		header.add(label,"align center,w 60%,h 100%");
+		
+		
 		
 		scrollPane = new JScrollPane();
 		scrollPane.setViewportView(productPane);
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setBorder(null);
-		scrollPane.getVerticalScrollBar().setUI(new SemiTransparentScrollBar(new Color(237,31,36)));
+		scrollPane.getVerticalScrollBar().setUI(new SemiTransparentScrollBar(Colors.red));
 		
 		
-		this.add(header, "w 100%, h 10%, wrap");
-		this.add(search,"gapx 10%, gapy 5%, w 80%, h 15%,wrap");
+		this.add(header, "w 100%, h 20%, wrap");
+		this.add(search,"gapx 10%, w 80%, h 15%,wrap");
 		this.add(scrollPane,"gapx 7%, gapy 5%, w 90%, h 55%");
-		search.setBackground(new Color(237,31,36));
-		productPane.setBackground(new Color(237,31,36));
-		this.setBackground(new Color(237,31,36));
+		search.setBackground(Colors.red);
+		productPane.setBackground(Colors.red);
+		this.setBackground(Colors.red);
 		
 	}
 	
@@ -108,7 +119,7 @@ public class Debiter extends JPanel implements IAppPanel{
 	@Override
 	public JButton getReturnButton() {
 		// TODO Auto-generated method stub
-		return new JButton();
+		return returnButton;
 	}
 	
 	

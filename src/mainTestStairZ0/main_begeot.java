@@ -2,7 +2,7 @@ package mainTestStairZ0;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Frame;
+
 import java.awt.geom.RoundRectangle2D;
 import java.io.IOException;
 

@@ -7,33 +7,39 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
-import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
-import javax.swing.border.TitledBorder;
+
+
+
+
+
 
 import apps.Client;
 import apps.FicheClient;
+import utils.pane.Colors;
 import utils.sql.Requests;
 
-public class ProductButton extends JButton implements ActionListener{
+public class ProductButton extends JButton implements ActionListener, MouseListener{
 	
 	
 	private FicheClient fclient;
 	private BufferedImage img;
+	private boolean mouseState = false;
 	
 	public ProductButton(String arg0){
 		super(arg0);
 		this.addActionListener(this);
-		this.setBorder(null);
+		this.addMouseListener(this);
 		this.setOpaque(false);
-		this.setBackground(new Color(237,31,36));
+		this.setBorder(null);
+		this.setBackground(Colors.red);
 		try {
 			this.img=ImageIO.read(new File("./resources/img/Produits/bouteille.png"));
 		} catch (IOException e) {
@@ -108,10 +114,56 @@ public class ProductButton extends JButton implements ActionListener{
 		g2d.drawImage(img, this.getWidth()*3/10, this.getFont().getSize()*3/2, this.getWidth()*2/5, this.getHeight()*7/12, null);
 		
 		//Dessin du fond transparent
-	    g2d.setComposite(AlphaComposite.SrcOver.derive(0.60f));
+		if(mouseState == false){
+			g2d.setComposite(AlphaComposite.SrcOver.derive(0.60f));
+		}
+		else{
+			g2d.setComposite(AlphaComposite.SrcOver.derive(0.75f));
+		}
 		g2d.fillRect(0, 0, this.getWidth(), this.getHeight());
   		
 		g2d.dispose();
   		
+	}
+
+	@Override
+	public void mouseClicked(MouseEvent arg0) {
+		mouseState = true;
+		repaint();
+		
+	}
+
+
+	@Override
+	public void mouseEntered(MouseEvent arg0) {
+		mouseState = true;
+		repaint();
+
+	}
+
+
+	@Override
+	public void mouseExited(MouseEvent arg0) {
+		mouseState = false;
+		repaint();
+
+	}
+
+
+	@Override
+	public void mousePressed(MouseEvent arg0) {
+		mouseState = true;
+		repaint();
+
+	}
+
+
+	@Override
+	public void mouseReleased(MouseEvent arg0) {
+		
+		mouseState = false;
+		repaint();
+		
+		
 	}
 }
