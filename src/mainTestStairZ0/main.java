@@ -14,6 +14,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import net.miginfocom.swing.MigLayout;
+import apps.Admin;
 import apps.Crediter;
 import apps.FicheClient;
 import aurelienribon.slidinglayout.SLAnimator;
@@ -49,6 +50,7 @@ public class main {
 		
 		
 		pane.addPanel(new Crediter());
+		pane.addPanel(new Admin());
 		test1.setLayout(new MigLayout("center"));
 		test1.setBackground(Color.black);
 		BufferedImage coope =ImageIO.read(new File("./resources/img/COOPE.png"));
