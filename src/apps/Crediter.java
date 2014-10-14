@@ -71,7 +71,7 @@ public class Crediter extends JPanel implements IAppPanel,ActionListener {
 		label.setVerticalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("Arial",Font.BOLD,80));
 		label.setForeground(new Color(255,255,255,145));
-		header.add(label,"align center,w 80%,h 100%");
+		header.add(label,"w 60%,h 100%");
 		
 		montant.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		montant.setHorizontalAlignment(JTextField.CENTER);
@@ -80,7 +80,7 @@ public class Crediter extends JPanel implements IAppPanel,ActionListener {
 		montant.setBackground(Color.white);
 		montant.setForeground(Colors.green);
 		montant.setSelectionColor(Colors.green);
-
+		montant.setEditable(false);
 		okButton.setBorderPainted(false);
 		okButton.setFont(new Font("Arial",Font.BOLD,60));
 		okButton.setBackground(Color.white);

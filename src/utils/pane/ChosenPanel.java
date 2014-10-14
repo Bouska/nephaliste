@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
@@ -27,7 +28,7 @@ import net.miginfocom.swing.MigLayout;
 		
 		
 		private Runnable action;
-		private boolean actionEnabled = true;
+		private boolean actionEnabled = false;
 		private boolean empty = true;
 		private boolean baction=false;
 		private JLabel label = new JLabel();
@@ -132,7 +133,44 @@ import net.miginfocom.swing.MigLayout;
 		//	remove(extend);
 			appPanel=pane;
 			remove(panel);
+			
 			imgPanel=new ImagePanel(pane.getThumbnail());
+			if(action==null)
+			{
+				imgPanel.addMouseListener(new MouseListener(){
+
+					@Override
+					public void mouseClicked(MouseEvent arg0) {
+						System.exit(0);
+						
+					}
+
+					@Override
+					public void mouseEntered(MouseEvent arg0) {
+						// TODO Auto-generated method stub
+						
+					}
+
+					@Override
+					public void mouseExited(MouseEvent arg0) {
+						// TODO Auto-generated method stub
+						
+					}
+
+					@Override
+					public void mousePressed(MouseEvent arg0) {
+						// TODO Auto-generated method stub
+						
+					}
+
+					@Override
+					public void mouseReleased(MouseEvent arg0) {
+						// TODO Auto-generated method stub
+						
+					}
+					
+				});
+			}
 			currentPanel = imgPanel;
 			panel=pane.getPanel();
 //			overlay.putConstraint(SpringLayout.NORTH, panel, 0, SpringLayout.NORTH, this);
