@@ -9,10 +9,12 @@ public class Client {
 	private static String promo;
 	private static String email;
 	private static String open;
+	private static String id;
 	private static boolean init;
 	
 	public Client(){
 		nom = "";
+		id="";
 		solde = "";
 		coopeman = "";
 		promo = "";
@@ -28,6 +30,7 @@ public class Client {
 		coopeman =Requests.getClientCoope(client);
 		email = Requests.getClientEmail(client);
 		open = Requests.getClientOpen(client);
+		id=Requests.getClientId(client);
 		init = true;
 	}
 	
@@ -52,4 +55,10 @@ public class Client {
 	public static String getOpen(){
 		return open;
 	}
+
+	public static String getId() {
+		return id;
+	}
+
+
 }	
