@@ -8,10 +8,13 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collections;
 
 import javax.imageio.ImageIO;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import net.miginfocom.swing.MigLayout;
@@ -19,6 +22,7 @@ import apps.*;
 import utils.pane.Colors;
 import utils.pane.ImageButton;
 import utils.pane.SemiTransparentComboBox;
+import utils.pane.SemiTransparentTextField;
 import utils.pane.TransparentButton;
 import utils.sql.Requests;
 
@@ -29,7 +33,8 @@ public class UpdateProduct extends JPanel implements ActionListener{
 	private TransparentButton updateButton;
 	
 	private SemiTransparentComboBox comboBox;
-	
+	private SemiTransparentTextField nameField = new SemiTransparentTextField("Produit");
+	private SemiTransparentTextField priceField = new SemiTransparentTextField("Prix");
 	private BufferedImage updateImage;
 	private ImageButton returnButton;
 
@@ -65,10 +70,30 @@ public class UpdateProduct extends JPanel implements ActionListener{
 		header.add(returnButton, "h 100%, w 20%");
 		header.add(label, "align center, h 100%, w 60%");
 		
-		comboBox = new SemiTransparentComboBox(Requests.getProducts("").toArray(),Colors.lightGray);
-		contentPane.add(comboBox,"h 10%, w 100%");
+		ArrayList<String> dbProd = Requests.getProducts("");
+		Collections.sort(dbProd);
+		comboBox = new SemiTransparentComboBox(dbProd.toArray(),Colors.lightGray);
+		comboBox.setFont(new Font("Arial",Font.BOLD,20));
+		
+		nameField.setBorder(null);
+		nameField.setFont(new Font("Arial",Font.BOLD,20));
+		nameField.setBackground(Color.white);
+		nameField.setSelectionColor(Colors.gray);
+		nameField.setHorizontalAlignment(JTextField.CENTER);
+		
+		priceField.setBorder(null);
+		priceField.setFont(new Font("Arial",Font.BOLD,20));
+		priceField.setBackground(Color.white);
+		priceField.setSelectionColor(Colors.gray);
+		priceField.setHorizontalAlignment(JTextField.CENTER);
+
+		
+		contentPane.add(comboBox,"gapy 4%,h 10%, w 100%,wrap");
+		contentPane.add(nameField,"gapy 1%, h 10%, w 100%,wrap");
+		contentPane.add(priceField,"gapy 1%, h 10%, w 50%,wrap");
+		
 		this.add(header, "h 20%, w 100%, wrap");
-		this.add(contentPane, "h 80%, w 100%");
+		this.add(contentPane, "align center,h 80%, w 60%");
 	}
 
 	@Override

@@ -75,7 +75,8 @@ public class ProductButton extends JButton implements ActionListener, MouseListe
 		g2d.setFont(new Font("Arial",Font.BOLD,17));
 		
 		//Dessin prix produit
-		g2d.drawString(""+Requests.getProductPrice(this.getText())+"€", 3*this.getWidth()/4, this.getFont().getSize()*3/2);
+		String price = ""+Requests.getProductPrice(this.getText())+"€";
+		g2d.drawString(price, 3*this.getWidth()/4-price.length()*this.getFont().getSize()/4, this.getFont().getSize()*3/2);
 		
 		
 		g2d.setFont(new Font("Arial",Font.BOLD,14));

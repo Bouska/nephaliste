@@ -89,14 +89,15 @@ public class CreateProduct extends JPanel implements ActionListener{
 
 		
 		this.add(header, "h 20%, w 100%, wrap");
-		this.add(contentPane, "gapx 20%, h 60%, w 60%");
+		this.add(contentPane, "align center, h 80%, w 60%");
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		if(arg0.getSource() == createButton && !Requests.getProduct("").contains(nameField.getText())){
+		if(arg0.getSource() == createButton && !Requests.getProducts(" ").contains(nameField.getText())){
 			Requests.createNewProduct(nameField.getText(), Float.parseFloat(priceField.getText()));
+			Debiter.getInstance().update();
 		}
 		else if(arg0.getSource() == returnButton){
 			CardLayout cl = (CardLayout)Admin.getInstance().getLayout();

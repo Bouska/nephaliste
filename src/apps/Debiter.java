@@ -33,7 +33,7 @@ public class Debiter extends JPanel implements IAppPanel{
 	private BufferedImage debiterHeader;
 	private ImageButton returnButton;
 	
-	public Debiter(){
+	private Debiter(){
 		
 		
 		try {
@@ -80,6 +80,14 @@ public class Debiter extends JPanel implements IAppPanel{
 		
 	}
 	
+
+	private static class SingletonHolder{
+		public static final Debiter INSTANCE = new Debiter();	
+	}
+	public static Debiter getInstance(){
+		return SingletonHolder.INSTANCE;
+	}
+	
 	
 	
 	public void refreshProductsList(){
@@ -104,7 +112,8 @@ public class Debiter extends JPanel implements IAppPanel{
 	@Override
 	public void update() {
 		// TODO Auto-generated method stub
-		
+		refreshProductsList();
+		search.update();
 	}
 
 

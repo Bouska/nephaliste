@@ -33,7 +33,7 @@ public class main_begeot {
 		test.setShape(new RoundRectangle2D.Double(0, 0, 1000, 750, 15, 15));
 		test.setSize(new Dimension(1000,750));
 		
-		pane.addPanel(new Debiter());
+		pane.addPanel(Debiter.getInstance());
 		pane.addPanel(new Crediter());
 		pane.addPanel(Compte.getInstance());
 		pane.addPanel(Admin.getInstance());
