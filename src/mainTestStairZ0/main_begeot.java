@@ -36,7 +36,7 @@ public class main_begeot {
 		pane.addPanel(new Debiter());
 		pane.addPanel(new Crediter());
 		pane.addPanel(Compte.getInstance());
-		pane.addPanel(Admin.getInstance());
+		pane.addPanel(new Admin());
 		test.getContentPane().setLayout(new MigLayout("insets 0 0 0 0"));
 		test.getContentPane().add(pane,"w 75%,h 100%");
 		test.getContentPane().add(FicheClient.getInstance(),"w 25%,h 100%");
