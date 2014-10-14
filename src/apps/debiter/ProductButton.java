@@ -57,7 +57,7 @@ public class ProductButton extends JButton implements ActionListener, MouseListe
 			double price = Requests.getProductPrice(this.getText());
 			String solde = Client.getSolde();
 			double amount = Double.parseDouble(solde) - price;
-			if((amount > 0)||(Client.getCoopeman().equals("1"))){
+			if((amount >= 0)||(Client.getCoopeman().equals("1"))){
 				Requests.setClientSolde(Client.getNom(), "-" + price);
 				fclient.updateClient(Client.getNom());
 			}
