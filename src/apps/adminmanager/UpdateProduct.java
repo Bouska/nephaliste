@@ -65,7 +65,7 @@ public class UpdateProduct extends JPanel implements ActionListener{
 		header.add(returnButton, "h 100%, w 20%");
 		header.add(label, "align center, h 100%, w 60%");
 		
-		comboBox = new SemiTransparentComboBox(Requests.getProducts("").toArray());
+		comboBox = new SemiTransparentComboBox(Requests.getProducts("").toArray(),Colors.lightGray);
 		contentPane.add(comboBox,"h 10%, w 100%");
 		this.add(header, "h 20%, w 100%, wrap");
 		this.add(contentPane, "h 80%, w 100%");
