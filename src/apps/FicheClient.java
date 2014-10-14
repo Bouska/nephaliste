@@ -149,6 +149,8 @@ public class FicheClient extends JPanel {
 		names = database.readRequest("SELECT nom FROM comptes WHERE promo > 2011 AND ouvert=1");
 		Collections.sort(names);
 		autocompleter.updateFiles(names);
+		updateClient(Requests.getClientName(Client.getId()));
+		
 	}
 
 }
