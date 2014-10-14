@@ -50,7 +50,7 @@ public class main {
 		
 		
 		pane.addPanel(new Crediter());
-		pane.addPanel(new Admin());
+		pane.addPanel(Admin.getInstance());
 		test1.setLayout(new MigLayout("center"));
 		test1.setBackground(Color.black);
 		BufferedImage coope =ImageIO.read(new File("./resources/img/COOPE.png"));
