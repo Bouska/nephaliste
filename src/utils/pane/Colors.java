@@ -11,7 +11,7 @@ public class Colors {
 	public static Color yellow =new Color(251,204,10);
 	public static Color orange=new Color(247,150,29);
 	public static Color lightGray=new Color(107,107,107);
-	public static Color gray=new Color(50,50,50);
+	public static Color gray=new Color(81,81,81);
 	public static Color magenta=new Color(159,80,158);
 
 }

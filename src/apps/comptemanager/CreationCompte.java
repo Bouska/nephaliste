@@ -64,26 +64,35 @@ public class CreationCompte extends JPanel implements ActionListener{
 		fnameField.setFont(new Font("Arial",Font.BOLD,20));
 		fnameField.setBackground(Color.white);
 		fnameField.setSelectionColor(Colors.blue);
+		fnameField.setHorizontalAlignment(JTextField.CENTER);
 		this.add(fnameField, "gapy 2%, align center,h 10%, w 70%, wrap");
 		nnameField.setBorder(null);		
 		nnameField.setFont(new Font("Arial",Font.BOLD,20));
 		nnameField.setBackground(Color.white);
 		nnameField.setSelectionColor(Colors.blue);
+		nnameField.setHorizontalAlignment(JTextField.CENTER);
+
 		this.add(nnameField, "gapy 1%, align center,h 10%, w 70%, wrap");
 		snameField.setBorder(null);
 		snameField.setFont(new Font("Arial",Font.BOLD,20));
 		snameField.setBackground(Color.white);
 		snameField.setSelectionColor(Colors.blue);
+		snameField.setHorizontalAlignment(JTextField.CENTER);
+
 		this.add(snameField, "gapy 1%, align center,h 10%, w 70%, wrap");
 		promoField.setBorder(null);
 		promoField.setFont(new Font("Arial",Font.BOLD,20));
 		promoField.setBackground(Color.white);
 		promoField.setSelectionColor(Colors.blue);
+		promoField.setHorizontalAlignment(JTextField.CENTER);
+
 		this.add(promoField, "gapy 1%, align center,h 10%, w 70%, wrap");
 		emailField.setBorder(null);
 		emailField.setFont(new Font("Arial",Font.BOLD,20));
 		emailField.setBackground(Color.white);
 		emailField.setSelectionColor(Colors.blue);
+		emailField.setHorizontalAlignment(JTextField.CENTER);
+
 		this.add(emailField, "gapy 1%, align center,h 10%, w 70%, wrap");
 		
 		createButton = new TransparentButton("Créer le Compte");

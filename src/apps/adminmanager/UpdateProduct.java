@@ -12,6 +12,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import javax.imageio.ImageIO;
+import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -79,18 +80,29 @@ public class UpdateProduct extends JPanel implements ActionListener{
 		nameField.setFont(new Font("Arial",Font.BOLD,20));
 		nameField.setBackground(Color.white);
 		nameField.setSelectionColor(Colors.gray);
-		nameField.setHorizontalAlignment(JTextField.CENTER);
 		
 		priceField.setBorder(null);
 		priceField.setFont(new Font("Arial",Font.BOLD,20));
 		priceField.setBackground(Color.white);
 		priceField.setSelectionColor(Colors.gray);
-		priceField.setHorizontalAlignment(JTextField.CENTER);
 
 		
-		contentPane.add(comboBox,"gapy 4%,h 10%, w 100%,wrap");
-		contentPane.add(nameField,"gapy 1%, h 10%, w 100%,wrap");
-		contentPane.add(priceField,"gapy 1%, h 10%, w 50%,wrap");
+		contentPane.add(comboBox,"gapy 4%,h 10%, w 90%");
+		
+		contentPane.add(new JPanel(){{
+			setBackground(Colors.gray);
+		}},"h 0%,w 10%,wrap");
+		contentPane.add(nameField,"gapy 1%, h 10%, w 90%");
+		
+		contentPane.add(new JPanel(){{
+			setBackground(Colors.gray);
+		}},"h 0%,w 10%,wrap");
+		
+		contentPane.add(priceField,"gapy 1%, h 10%, w 50%");
+		contentPane.add(new JLabel("€"){{
+			setFont(new Font("Arial",Font.BOLD,30));
+			setForeground(Colors.lightGray);
+		}},"h 10%, w 10%");
 		
 		this.add(header, "h 20%, w 100%, wrap");
 		this.add(contentPane, "align center,h 80%, w 60%");

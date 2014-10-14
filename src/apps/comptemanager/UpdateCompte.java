@@ -71,16 +71,22 @@ public class UpdateCompte extends JPanel implements ActionListener{
 		fnameField.setFont(new Font("Arial",Font.BOLD,20));
 		fnameField.setBackground(Color.white);
 		fnameField.setSelectionColor(Colors.blue);
+		fnameField.setHorizontalAlignment(JTextField.CENTER);
+
 		contentPane.add(fnameField, "gapy 2%, align center,h 10%, w 100%, wrap");
 		promoField.setBorder(null);
 		promoField.setFont(new Font("Arial",Font.BOLD,20));
 		promoField.setBackground(Color.white);
 		promoField.setSelectionColor(Colors.blue);
+		promoField.setHorizontalAlignment(JTextField.CENTER);
+
 		contentPane.add(promoField, "gapy 1%, align center,h 10%, w 100%, wrap");
 		emailField.setBorder(null);
 		emailField.setFont(new Font("Arial",Font.BOLD,20));
 		emailField.setBackground(Color.white);
 		emailField.setSelectionColor(Colors.blue);
+		emailField.setHorizontalAlignment(JTextField.CENTER);
+
 		contentPane.add(emailField, "gapy 1%, align center,h 10%, w 100%, wrap");
 		contentPane.add(coopemanField, "gapy 1%, h 10%, w 50%, wrap");
 		contentPane.add(openedField, "gapy 1%, h 10%, w 50%, wrap");

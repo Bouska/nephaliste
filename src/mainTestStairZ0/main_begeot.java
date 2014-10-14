@@ -2,7 +2,6 @@ package mainTestStairZ0;
 
 import java.awt.Color;
 import java.awt.Dimension;
-
 import java.awt.geom.RoundRectangle2D;
 import java.io.IOException;
 
@@ -12,6 +11,7 @@ import net.miginfocom.swing.MigLayout;
 import apps.*;
 import aurelienribon.slidinglayout.SLAnimator;
 import utils.pane.ChoosingPanel;
+import utils.pane.MotionPanel;
 
 
 
@@ -21,13 +21,14 @@ public class main_begeot {
 		SLAnimator.start();
 		JFrame test = new JFrame("Néphaliste");
 		
+
 		test.setBackground(Color.black);
 		ChoosingPanel pane = new ChoosingPanel(3,3);
 		pane.setBackground(Color.black);
 		
-		
-		test.setContentPane(new ContentPane());
-		
+		test.setContentPane(new MotionPanel(test));
+		test.getContentPane().setBackground(Color.black);
+
 		test.setUndecorated(true);
 		
 		test.setShape(new RoundRectangle2D.Double(0, 0, 1000, 750, 15, 15));
