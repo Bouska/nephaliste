@@ -59,7 +59,7 @@ public class main {
 		test.getContentPane().add(test1,"w 75%,h 100%");
 		test.getContentPane().add(FicheClient.getInstance(),"w 25%,h 100%");
 		
-		pane.addPanel(new Debiter());
+		pane.addPanel(Debiter.getInstance());
 		pane.addPanel(new Crediter());
 		pane.addPanel(new Historique());
 		pane.addPanel(Compte.getInstance());

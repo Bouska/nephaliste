@@ -33,12 +33,12 @@ public class Statistiques extends JPanel implements IAppPanel{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			}
-		this.setBackground(Colors.yellow);
+		this.setBackground(Colors.magenta);
 		returnButton = new ImageButton(statHeader);
 		setLayout(new MigLayout());
 		add(header,"w 100%,h 20%,wrap");
 		JPanel test = new JPanel();
-		test.setBackground(Colors.yellow);
+		test.setBackground(Colors.magenta);
 		add(test,"w 100%,h 80%");
 		header.setLayout(new MigLayout());
 		header.add(returnButton,"w 20%,h 100%");

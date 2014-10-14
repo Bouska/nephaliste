@@ -33,12 +33,12 @@ public class Mail extends JPanel implements IAppPanel{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			}
-		this.setBackground(Colors.yellow);
+		this.setBackground(Colors.blue);
 		returnButton = new ImageButton(mailHeader);
 		setLayout(new MigLayout());
 		add(header,"w 100%,h 20%,wrap");
 		JPanel test = new JPanel();
-		test.setBackground(Colors.yellow);
+		test.setBackground(Colors.blue);
 		add(test,"w 100%,h 80%");
 		header.setLayout(new MigLayout());
 		header.add(returnButton,"w 20%,h 100%");
