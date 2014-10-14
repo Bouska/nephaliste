@@ -104,6 +104,14 @@ public class CreationCompte extends JPanel implements ActionListener{
 		this.add(createButton, "gapx 25%, gapy 2% , h 10%, w 50%");
 		this.setBackground(Colors.blue);
 	}
+	
+	public void update(){
+		this.fnameField.setText("Prénom");
+		this.nnameField.setText("Surnom");
+		this.snameField.setText("Nom");
+		this.promoField.setText("Promo");
+		this.emailField.setText("E-Mail");
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
@@ -112,6 +120,7 @@ public class CreationCompte extends JPanel implements ActionListener{
 			Requests.createNewClient(fnameField.getText(),snameField.getText(),nnameField.getText(),Integer.parseInt(promoField.getText()), emailField.getText());
 			fc = FicheClient.getInstance();
 			fc.updateAutocompleter();
+			update();
 		}
 		else if(arg0.getSource() == returnButton){
 			CardLayout cl = (CardLayout)Compte.getInstance().getLayout();

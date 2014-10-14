@@ -31,7 +31,8 @@ public class UpdateProduct extends JPanel implements ActionListener{
 	
 	private JPanel header = new JPanel();
 	private JPanel contentPane = new JPanel();
-	private TransparentButton updateButton;
+	private TransparentButton updateButton = new TransparentButton("Mettre à Jour");
+	private TransparentButton deleteButton = new TransparentButton("Supprimer");
 	
 	private SemiTransparentComboBox comboBox;
 	private SemiTransparentTextField nameField = new SemiTransparentTextField("Produit");
@@ -41,7 +42,7 @@ public class UpdateProduct extends JPanel implements ActionListener{
 
 	private static final String MAINPANEL = "mainPanel";
 	
-	public UpdateProduct(){
+	private UpdateProduct(){
 		
 		try {
 			this.updateImage = ImageIO.read(new File("./resources/img/admin/headers/update.png"));
@@ -75,6 +76,7 @@ public class UpdateProduct extends JPanel implements ActionListener{
 		Collections.sort(dbProd);
 		comboBox = new SemiTransparentComboBox(dbProd.toArray(),Colors.lightGray);
 		comboBox.setFont(new Font("Arial",Font.BOLD,20));
+		comboBox.addActionListener(this);
 		
 		nameField.setBorder(null);
 		nameField.setFont(new Font("Arial",Font.BOLD,20));
@@ -87,25 +89,55 @@ public class UpdateProduct extends JPanel implements ActionListener{
 		priceField.setSelectionColor(Colors.gray);
 
 		
-		contentPane.add(comboBox,"gapy 4%,h 10%, w 90%");
-		
-		contentPane.add(new JPanel(){{
-			setBackground(Colors.gray);
-		}},"h 0%,w 10%,wrap");
-		contentPane.add(nameField,"gapy 1%, h 10%, w 90%");
-		
-		contentPane.add(new JPanel(){{
-			setBackground(Colors.gray);
-		}},"h 0%,w 10%,wrap");
-		
-		contentPane.add(priceField,"gapy 1%, h 10%, w 50%");
-		contentPane.add(new JLabel("€"){{
+		contentPane.add(comboBox,"align center,gapy 4%,h 10%, w 90%,wrap");
+		contentPane.add(nameField,"align center,gapy 1%, h 10%, w 90%,wrap");
+		JPanel disp = new JPanel(new MigLayout("insets 0 0 0 0"));
+		disp.setBackground(Colors.gray);
+		disp.add(priceField,"h 100%, w 50%");
+		disp.add(new JLabel(" €"){{
 			setFont(new Font("Arial",Font.BOLD,30));
-			setForeground(Colors.lightGray);
-		}},"h 10%, w 10%");
+			setForeground(new Color(255,255,255,145));
+			setVerticalAlignment(JTextField.CENTER);
+		}},"h 10%, w 20%,wrap");
+		contentPane.add(disp,"align center,gapy 1%, h 10%, w 90%,wrap");
 		
+		updateButton.setBorderPainted(false);
+		updateButton.setFont(new Font("Arial",Font.BOLD,30));
+		updateButton.setBackground(Color.white);
+		updateButton.setForeground(Colors.gray);
+		updateButton.addActionListener(this);
+		
+		deleteButton.setBorderPainted(false);
+		deleteButton.setFont(new Font("Arial",Font.BOLD,30));
+		deleteButton.setBackground(Color.white);
+		deleteButton.setForeground(Colors.gray);
+		deleteButton.addActionListener(this);
+		
+		
+		JPanel disp2 = new JPanel(new MigLayout("insets 0 0 0 0"));
+		disp2.setBackground(Colors.gray);
+		disp2.add(updateButton,"h 100%, w 48%");
+		disp2.add(deleteButton,"h 100%, w 48%,gapx 4%");
+		contentPane.add(disp2,"align center,gapy 5%, h 10%, w 70%");
+
 		this.add(header, "h 20%, w 100%, wrap");
-		this.add(contentPane, "align center,h 80%, w 60%");
+		this.add(contentPane, "align center,h 80%, w 70%,wrap");
+	}
+	
+	private static class SingletonHolder{
+		public static UpdateProduct INSTANCE = new UpdateProduct();
+	}
+	public static UpdateProduct getInstance(){
+		return SingletonHolder.INSTANCE;
+	}
+	
+	public void update(){
+		ArrayList<String> dbProd = Requests.getProducts("");
+		Collections.sort(dbProd);
+		comboBox.updateList(dbProd.toArray());
+		comboBox.setSelectedIndex(0);
+		this.nameField.setText("Produit");
+		this.priceField.setText("Prix");
 	}
 
 	@Override
@@ -115,7 +147,20 @@ public class UpdateProduct extends JPanel implements ActionListener{
 			CardLayout cl = (CardLayout)Admin.getInstance().getLayout();
 			cl.show(Admin.getInstance(), MAINPANEL);
 		}
-
+		else if(arg0.getSource() == comboBox){
+			this.nameField.setText((String)comboBox.getSelectedItem());
+			this.priceField.setText(""+Requests.getProductPrice((String)comboBox.getSelectedItem()));
+		}
+		else if(arg0.getSource() == updateButton){
+			Requests.updateProduct((String)comboBox.getSelectedItem(), this.nameField.getText(), Float.parseFloat(this.priceField.getText()));
+			Debiter.getInstance().update();
+			update();
+		}
+		else if(arg0.getSource() == deleteButton){
+			Requests.deleteProduct((String)comboBox.getSelectedItem());
+			Debiter.getInstance().update();
+			update();
+		}
 	}
 
 }

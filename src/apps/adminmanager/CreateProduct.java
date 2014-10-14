@@ -12,6 +12,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import net.miginfocom.swing.MigLayout;
@@ -76,6 +77,7 @@ public class CreateProduct extends JPanel implements ActionListener{
 		priceField.setBackground(Color.white);
 		priceField.setSelectionColor(Colors.gray);
 		
+		
 		createButton = new TransparentButton("Créer le Produit");
 		createButton.setBorderPainted(false);
 		createButton.setFont(new Font("Arial",Font.BOLD,30));
@@ -83,21 +85,38 @@ public class CreateProduct extends JPanel implements ActionListener{
 		createButton.setForeground(Colors.gray);
 		createButton.addActionListener(this);
 		
+		JPanel disp = new JPanel(new MigLayout("insets 0 0 0 0"));
+		disp.setBackground(Colors.gray);
+		disp.add(priceField,"h 100%, w 50%");
+		disp.add(new JLabel(" €"){{
+			setFont(new Font("Arial",Font.BOLD,30));
+			setForeground(new Color(255,255,255,145));
+			setVerticalAlignment(JTextField.CENTER);
+		}},"h 10%, w 20%,wrap");
+		contentPane.add(disp,"gapy 1%, h 10%, w 100%");
+		
 		contentPane.add(nameField, "gapy 10%,h 10%, w 100%, wrap");
-		contentPane.add(priceField, "gapy 1%, h 10%, w 50%, wrap");
+		contentPane.add(disp, "gapy 1%, h 10%, w 100%, wrap");
 		contentPane.add(createButton, "gapx 25%, gapy 4% , h 10%, w 50%");
 
 		
 		this.add(header, "h 20%, w 100%, wrap");
 		this.add(contentPane, "align center, h 80%, w 60%");
 	}
+	
+	public void update(){
+		this.nameField.setText("Nom");
+		this.priceField.setText("Prix");
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		if(arg0.getSource() == createButton && !Requests.getProducts(" ").contains(nameField.getText())){
+		if(arg0.getSource() == createButton && !Requests.getProducts(" ").contains(nameField.getText())){                         
 			Requests.createNewProduct(nameField.getText(), Float.parseFloat(priceField.getText()));
 			Debiter.getInstance().update();
+			UpdateProduct.getInstance().update();
+			update();
 		}
 		else if(arg0.getSource() == returnButton){
 			CardLayout cl = (CardLayout)Admin.getInstance().getLayout();

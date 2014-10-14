@@ -31,6 +31,11 @@ public class PSearchBar extends JPanel implements ActionListener{
 	}
 	
 	public void update(){
+		if(!letters.isEmpty() || !letterButtons.isEmpty()){
+			this.removeAll();
+			letters.clear();
+			letterButtons.clear();
+		}
 		dbProducts = Requests.getProducts("");
 		Collections.sort(dbProducts);
 		for(int i = 0; i < dbProducts.size(); i++){

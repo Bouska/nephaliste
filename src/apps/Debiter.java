@@ -75,7 +75,7 @@ public class Debiter extends JPanel implements IAppPanel{
 		this.add(search,"gapx 10%, w 80%, h 15%,wrap");
 		this.add(scrollPane,"gapx 7%, gapy 5%, w 90%, h 55%");
 		search.setBackground(Colors.red);
-		productPane.setBackground(Colors.red);
+		productPane.setBackground(Colors.darkRed);
 		this.setBackground(Colors.red);
 		
 	}
@@ -91,12 +91,16 @@ public class Debiter extends JPanel implements IAppPanel{
 	
 	
 	public void refreshProductsList(){
-		dbProducts = Requests.getProducts(search.getSelected());
-		for(int i = 0; i<dbProducts.size();i++){
-			products.put(dbProducts.get(i),new ProductButton(dbProducts.get(i)));
+		if(!search.getSelected().equals("")){
+			dbProducts = Requests.getProducts(search.getSelected());
+			for(int i = 0; i<dbProducts.size();i++){
+				products.put(dbProducts.get(i),new ProductButton(dbProducts.get(i)));
+			}
+			productPane.refreshProducts(products, dbProducts);
 		}
-		productPane.refreshProducts(products, dbProducts);
-		
+		else{
+			productPane.deleteProducts();
+		}
 	}
 
 

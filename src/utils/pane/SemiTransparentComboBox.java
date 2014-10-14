@@ -16,23 +16,35 @@ import javax.swing.plaf.metal.MetalComboBoxUI;
 
 public class SemiTransparentComboBox extends JComboBox{
 	
-	private Color menuColor = this.getBackground();
+	private Color menuColor;
 	public SemiTransparentComboBox(Object[] items, Color color){
 		super(items);
 		this.menuColor = color;
-		this.setUI(new STComboBoxUI());
+		this.setUI(new STComboBoxUI(menuColor));
+		this.setMaximumRowCount(10);
 	}
 	
+	public void updateList(Object[] items){
+		this.removeAll();
+		this.setUI(new STComboBoxUI(menuColor));
+		this.setMaximumRowCount(10);
+		this.setModel(new DefaultComboBoxModel(items));;
+	}
 	
 	class STComboBoxUI extends MetalComboBoxUI {
+		
+		private Color color;
+		public STComboBoxUI(Color color){
+			super();
+			this.color = color;
+		}
 		protected ComboPopup createPopup() {
 			STBasicComboPopup popup = new STBasicComboPopup(comboBox);
 			JList list = popup.getList();
 			return popup;
 	   }           
 		protected JButton createArrowButton(){
-			JButton button = new ComboBoxButton();
-			button.setBackground(menuColor);
+			JButton button = new ComboBoxButton(color);
 			return button;
 		}
 		
@@ -51,13 +63,15 @@ public class SemiTransparentComboBox extends JComboBox{
 	
 	class ComboBoxButton extends JButton implements MouseListener{
 		
-		public ComboBoxButton(){
+		private Color color;
+		public ComboBoxButton(Color color){
 			super();
+			this.color = color;
 		}
 		
 		public void paintComponent(Graphics g){
 			Graphics2D g2d = (Graphics2D) g.create();
-			g2d.setColor(getBackground());
+			g2d.setColor(color);
 			g2d.fillRect(0, 0, this.getWidth(), this.getHeight());
 		
 		}

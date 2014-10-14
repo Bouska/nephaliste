@@ -91,7 +91,7 @@ public class Admin extends JPanel implements IAppPanel, ActionListener{
 		
 		this.add(contentPane, MAINPANEL);
 		this.add(cp = new CreateProduct(), CREATEPANEL);
-		this.add(up = new UpdateProduct(), UPDATEPANEL);
+		this.add(up = UpdateProduct.getInstance(), UPDATEPANEL);
 		
 	}
 	

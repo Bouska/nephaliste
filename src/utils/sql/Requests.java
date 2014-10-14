@@ -144,6 +144,17 @@ public class Requests {
 		db.writeRequest(request);
 	}
 	
+	static public void updateProduct(String product, String nom, Float price){
+		String request = "UPDATE recettes SET nom = '" + nom + "', prix = " + price + " WHERE nom = '" + product + "'";
+		db.writeRequest(request);
+	}
+	
+	static public void deleteProduct(String product){
+		String request = "DELETE FROM recettes WHERE nom = '" + product +"'";
+		db.writeRequest(request);
+	}
+	
+	
 	static public String getProductId(String product)
 	{
 		String request = "SELECT id FROM recettes WHERE nom = '"+product+"'";

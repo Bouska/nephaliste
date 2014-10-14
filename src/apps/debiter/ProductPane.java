@@ -25,4 +25,10 @@ public class ProductPane extends JPanel{
 		this.repaint();
 		this.revalidate();
 	}
+	
+	public void deleteProducts(){
+		this.removeAll();
+		this.repaint();
+		this.revalidate();
+	}
 }
