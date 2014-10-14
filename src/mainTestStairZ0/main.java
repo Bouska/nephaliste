@@ -17,8 +17,14 @@ import javax.swing.JPanel;
 import net.miginfocom.swing.MigLayout;
 import apps.Admin;
 import apps.BierePong;
+import apps.Compte;
 import apps.Crediter;
+import apps.Debiter;
+import apps.Eteindre;
 import apps.FicheClient;
+import apps.Historique;
+import apps.Mail;
+import apps.Statistiques;
 import aurelienribon.slidinglayout.SLAnimator;
 import utils.pane.ChoosingPanel;
 import utils.pane.ImagePanel;
@@ -53,10 +59,15 @@ public class main {
 		test.getContentPane().add(test1,"w 75%,h 100%");
 		test.getContentPane().add(FicheClient.getInstance(),"w 25%,h 100%");
 		
-		
+		pane.addPanel(new Debiter());
 		pane.addPanel(new Crediter());
+		pane.addPanel(new Historique());
+		pane.addPanel(Compte.getInstance());
+		pane.addPanel(new Mail());
 		pane.addPanel(Admin.getInstance());
+		pane.addPanel(new Statistiques());
 		pane.addPanel(new BierePong());
+		pane.addPanel(new Eteindre());
 		test1.setLayout(new MigLayout("center"));
 		test1.setBackground(Color.black);
 		BufferedImage coope =ImageIO.read(new File("./resources/img/COOPE.png"));
