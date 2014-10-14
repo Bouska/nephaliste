@@ -52,7 +52,7 @@ public class ProductButton extends JButton implements ActionListener, MouseListe
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
 		// TODO Auto-generated method stub
-		if(Client.isInit()){
+		if(Client.isInit() && Client.getOpen().equals("1")){
 			fclient = FicheClient.getInstance();
 			double price = Requests.getProductPrice(this.getText());
 			String solde = Client.getSolde();

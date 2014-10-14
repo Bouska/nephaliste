@@ -67,8 +67,8 @@ public class Admin extends JPanel implements IAppPanel, ActionListener{
 		createButton.addActionListener(this);
 		updateButton.addActionListener(this);
 		
-		contentPane.setLayout(new MigLayout());
-		bpane.setLayout(new MigLayout());
+		contentPane.setLayout(new MigLayout("insets 0 0 0 0"));
+		bpane.setLayout(new MigLayout("insets 0 0 0 0"));
 		
 		bpane.add(createButton, "gapx 15%, gapy 30%, w 32%, h 40%");
 		bpane.add(updateButton, "gapx 6%, gapy 30%, w 32%, h 40%");
@@ -77,6 +77,7 @@ public class Admin extends JPanel implements IAppPanel, ActionListener{
 		
 		contentPane.setBackground(Colors.lightGray);
 		bpane.setBackground(Colors.lightGray);
+		this.setBackground(Colors.lightGray);
 		
 		header.setLayout(new MigLayout());
 		header.add(returnButton,"w 20%,h 100%");

@@ -138,6 +138,12 @@ public class Requests {
 		db.writeRequest(request);
 	}
 	
+	static public void createNewProduct(String name, Float price){
+		String request = "INSERT INTO recettes (nom, prix, disponible, stock, bouton, soiree)"
+				+ " VALUES ('"+name+"', "+ price + ",1, 0, 0, 0)";
+		db.writeRequest(request);
+	}
+	
 	static public String getProductId(String product)
 	{
 		String request = "SELECT id FROM recettes WHERE nom = '"+product+"'";

@@ -27,6 +27,10 @@ public class PSearchBar extends JPanel implements ActionListener{
 		this.dPanel = dPanel;
 		MigLayout layout = new MigLayout("insets 0 0 0 0, wrap 6");
 		this.setLayout(layout);
+		update();
+	}
+	
+	public void update(){
 		dbProducts = Requests.getProducts("");
 		Collections.sort(dbProducts);
 		for(int i = 0; i < dbProducts.size(); i++){
@@ -38,7 +42,6 @@ public class PSearchBar extends JPanel implements ActionListener{
 				this.add(letterButtons.get(letterButtons.size()-1), "w 20%, h 30%");
 			}
 		}
-
 	}
 	
 	public String getSelected(){
