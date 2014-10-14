@@ -49,8 +49,8 @@ public class main {
 		
 		test.setUndecorated(true);
 		
-		test.setShape(new RoundRectangle2D.Double(0, 0,1200, 1024, 15, 15));
-		test.setSize(new Dimension(1200,1024));
+		test.setShape(new RoundRectangle2D.Double(0, 0,1100, 950, 15, 15));
+		test.setSize(new Dimension(1100,950));
 		
 		test.getContentPane().setLayout(new MigLayout("insets 0 0 0 0"));
 		JPanel test1 = new JPanel();

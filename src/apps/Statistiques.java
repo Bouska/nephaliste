@@ -46,7 +46,7 @@ public class Statistiques extends JPanel implements IAppPanel{
 		JLabel label = new JLabel("STATISTIQUES");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setVerticalAlignment(SwingConstants.CENTER);
-		label.setFont(new Font("Arial",Font.BOLD,80));
+		label.setFont(new Font("Arial",Font.BOLD,70));
 		label.setForeground(new Color(255,255,255,145));
 		header.add(label,"w 60%,h 100%");
 	}
