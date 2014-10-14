@@ -189,8 +189,7 @@ public class Crediter extends JPanel implements IAppPanel,ActionListener {
 		{
 			double oldSolde = Double.parseDouble(Requests.getClientSolde(Client.getNom()));
 			double montant = Double.parseDouble(this.montant.getText());
-			double newSolde = oldSolde+montant;
-		    Requests.setClientSolde(Client.getNom(),String.valueOf(newSolde ));
+		    Requests.setClientSolde(Client.getNom(),""+montant);
 		}
 			montant.setText("0.0");
 		}
@@ -209,6 +208,8 @@ public class Crediter extends JPanel implements IAppPanel,ActionListener {
 		formatter.setDecimalFormatSymbols(sym);
 		montant.setText(formatter.format((Double.parseDouble(montant.getText())+solde)).toString());
 		}
+		FicheClient fc = FicheClient.getInstance();
+		fc.updateClient(Client.getNom());
 	}
 	@Override
 	public JButton getReturnButton() {

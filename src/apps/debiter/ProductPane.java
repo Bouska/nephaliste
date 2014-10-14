@@ -14,6 +14,7 @@ public class ProductPane extends JPanel{
 	
 	public void refreshProducts(HashMap<String, JButton> hashProd, ArrayList<String> dbProd){
 		this.removeAll();
+		
 		for(int i = 0; i < dbProd.size(); i++){
 			if(i > 3){
 				this.add(hashProd.get(dbProd.get(i)), "h 180px, w 22%, gapx 2%, gapy 1%");

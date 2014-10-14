@@ -1,7 +1,10 @@
 package apps;
 
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -21,7 +24,7 @@ import utils.pane.SemiTransparentScrollBar;
 import utils.sql.Requests;
 import net.miginfocom.swing.MigLayout;
 
-public class Debiter extends JPanel implements IAppPanel{
+public class Debiter extends JPanel implements IAppPanel,ActionListener{
 
 	private HashMap<String,JButton> products = new HashMap<String,JButton>();
 	private ArrayList<String> dbProducts = new ArrayList<String>();
@@ -45,7 +48,7 @@ public class Debiter extends JPanel implements IAppPanel{
 		}
 		
 		returnButton = new ImageButton(debiterHeader);
-
+		returnButton.addActionListener(this);
 		this.setLayout(new MigLayout("insets 0 0 0 0, wrap"));
 		search = new PSearchBar(this);
 		productPane = new ProductPane();
@@ -69,7 +72,7 @@ public class Debiter extends JPanel implements IAppPanel{
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.setBorder(null);
 		scrollPane.getVerticalScrollBar().setUI(new SemiTransparentScrollBar(Colors.red));
-		
+		scrollPane.setMaximumSize(new Dimension(1500,1500));
 		
 		this.add(header, "w 100%, h 20%, wrap");
 		this.add(search,"gapx 10%, w 80%, h 15%,wrap");
@@ -92,6 +95,7 @@ public class Debiter extends JPanel implements IAppPanel{
 	
 	public void refreshProductsList(){
 		if(!search.getSelected().equals("")){
+			products.clear();
 			dbProducts = Requests.getProducts(search.getSelected());
 			for(int i = 0; i<dbProducts.size();i++){
 				products.put(dbProducts.get(i),new ProductButton(dbProducts.get(i)));
@@ -134,6 +138,16 @@ public class Debiter extends JPanel implements IAppPanel{
 	public JButton getReturnButton() {
 		// TODO Auto-generated method stub
 		return returnButton;
+	}
+
+
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		if(arg0.getSource() == returnButton){
+			search.deselect();
+		}
 	}
 	
 	

@@ -57,6 +57,14 @@ public class PSearchBar extends JPanel implements ActionListener{
 			return L.getText();
 		}
 	}
+	
+	public void deselect(){
+		if(L != null){
+			L.setSelected(false);
+			L = null;
+			this.dPanel.refreshProductsList();
+		}		
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent arg0) {
