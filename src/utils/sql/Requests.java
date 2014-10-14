@@ -200,7 +200,7 @@ public class Requests {
 	
 	static public String getClientName(String id)
 	{
-		String request = "SELECT name FROM comptes WHERE id = '"+id+"'";
+		String request = "SELECT nom FROM comptes WHERE id = '"+id+"'";
 		ArrayList<String> test = db.readRequest(request);
 		return test.get(0);
 	}
