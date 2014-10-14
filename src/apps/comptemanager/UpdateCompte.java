@@ -16,6 +16,7 @@ import javax.swing.*;
 import net.miginfocom.swing.MigLayout;
 import apps.*;
 import utils.pane.*;
+import utils.sql.Requests;
 
 public class UpdateCompte extends JPanel implements ActionListener{
 	
@@ -27,8 +28,11 @@ public class UpdateCompte extends JPanel implements ActionListener{
 	private SemiTransparentTextField promoField = new SemiTransparentTextField("Promo");
 	private SemiTransparentTextField emailField = new SemiTransparentTextField("E-Mail");
 	private SemiTransparentCheckBox coopemanField = new SemiTransparentCheckBox("Coopeman","0");
+	private SemiTransparentCheckBox openedField = new SemiTransparentCheckBox("Ouvert","0");
+	
 	
 	private BufferedImage updateImage;
+	private TransparentButton updateButton;
 	private ImageButton returnButton;
 	
 	private static final String MAINPANEL = "mainComptes";
@@ -66,18 +70,27 @@ public class UpdateCompte extends JPanel implements ActionListener{
 		fnameField.setBorder(null);
 		fnameField.setFont(new Font("Arial",Font.BOLD,20));
 		fnameField.setBackground(Color.white);
-		
+		fnameField.setSelectionColor(Colors.blue);
 		contentPane.add(fnameField, "gapy 2%, align center,h 10%, w 100%, wrap");
 		promoField.setBorder(null);
 		promoField.setFont(new Font("Arial",Font.BOLD,20));
 		promoField.setBackground(Color.white);
+		promoField.setSelectionColor(Colors.blue);
 		contentPane.add(promoField, "gapy 1%, align center,h 10%, w 100%, wrap");
 		emailField.setBorder(null);
 		emailField.setFont(new Font("Arial",Font.BOLD,20));
 		emailField.setBackground(Color.white);
+		emailField.setSelectionColor(Colors.blue);
 		contentPane.add(emailField, "gapy 1%, align center,h 10%, w 100%, wrap");
 		contentPane.add(coopemanField, "gapy 1%, h 10%, w 50%, wrap");
-		
+		contentPane.add(openedField, "gapy 1%, h 10%, w 50%, wrap");
+		updateButton = new TransparentButton("Mettre à Jour");
+		updateButton.setBorderPainted(false);
+		updateButton.setFont(new Font("Arial",Font.BOLD,30));
+		updateButton.setBackground(Color.white);
+		updateButton.setForeground(Colors.blue);
+		updateButton.addActionListener(this);
+		contentPane.add(updateButton, "gapx 25%, gapy 2% , h 10%, w 50%");
 		
 		this.setLayout(new MigLayout("insets 0 0 0 0"));
 		this.add(header, "w 100%, h 20%,wrap");
@@ -94,6 +107,17 @@ public class UpdateCompte extends JPanel implements ActionListener{
 			CardLayout cl = (CardLayout)Compte.getInstance().getLayout();
 			cl.show(Compte.getInstance(), MAINPANEL);
 		}
+		else if(arg0.getSource() == updateButton){
+			String coopeman = "0", opened = "0";
+			if(coopemanField.isSelected() == true){
+				coopeman = "1";
+			}
+			if(openedField.isSelected() == true){
+				opened = "1";
+			}
+			Requests.updateClient(Client.getNom(), fnameField.getText(), Integer.parseInt(promoField.getText()), emailField.getText(), coopeman, opened);
+			FicheClient.getInstance().updateAutocompleter();
+		}
 	}
 	
 	public void update(){
@@ -108,6 +132,13 @@ public class UpdateCompte extends JPanel implements ActionListener{
 			state = false;
 		}
 		coopemanField.setSelected(state);
+		if(Client.getOpen().equals("1")){
+			state = true;
+		}
+		else{
+			state = false;
+		}
+		openedField.setSelected(state);
 	}
 	
 }

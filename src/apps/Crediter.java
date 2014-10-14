@@ -78,6 +78,8 @@ public class Crediter extends JPanel implements IAppPanel,ActionListener {
 		montant.setBorder(null);
 		montant.setBackground(Color.white);
 		montant.setForeground(Colors.green);
+		montant.setSelectionColor(Colors.green);
+
 		okButton.setBorderPainted(false);
 		okButton.setFont(new Font("Arial",Font.BOLD,60));
 		okButton.setBackground(Color.white);

@@ -38,12 +38,11 @@ public class SemiTransparentCheckBox extends JCheckBox{
 			g2d.setComposite(AlphaComposite.SrcOver.derive(1.0f));
 			g2d.setColor(Colors.blue);	
 			g2d.fillRect(this.getWidth() - this.getHeight()/4 - this.getHeight()/2 + 5, this.getHeight()/4 + 5, this.getHeight()/2 - 10, this.getHeight()/2 - 10);
-
 		}
 
 	
 		g2d.setColor(Colors.blue);
-		g2d.setComposite(AlphaComposite.SrcOver.derive(0.6f));
+		g2d.setComposite(AlphaComposite.SrcOver.derive(1f));
 		g2d.drawString(this.getText(), this.getHeight()/4, this.getHeight()/2 + this.getFont().getSize()/2);
 
 		

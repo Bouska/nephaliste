@@ -170,6 +170,16 @@ public class Requests {
 		return test.get(0);
 	}
 	
+	static public String getClientOpen(String client){
+		String request = "SELECT ouvert FROM comptes WHERE nom = '"+client+"'";
+		ArrayList<String> test = db.readRequest(request);
+		return test.get(0);
+	}
+	
+	static public void updateClient(String client, String nom, int promo, String email, String coopeman, String opened){
+		String request = "UPDATE comptes SET nom = '" + nom + "', promo = '" + promo + "', email = '" + email + "', ouvert = '" + opened + "', coopeman = '" + coopeman + "' WHERE nom = '" + client + "'";
+		db.writeRequest(request);
+	}
 	
 	static public String getClientName(String id)
 	{
