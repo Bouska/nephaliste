@@ -1,5 +1,6 @@
 package mainTestStairZ0;
 
+import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Frame;
@@ -21,6 +22,7 @@ import apps.FicheClient;
 import aurelienribon.slidinglayout.SLAnimator;
 import utils.pane.ChoosingPanel;
 import utils.pane.ImagePanel;
+import utils.pane.MotionPanel;
 
 
 
@@ -35,7 +37,9 @@ public class main {
 		pane.setBackground(Color.black);
 		
 		
-		test.setContentPane(new ContentPane());
+		test.setContentPane(new MotionPanel(test));
+		//test.getContentPane().setLayout(new CardLayout());
+		test.getContentPane().setBackground(Color.black);
 		
 		test.setUndecorated(true);
 		
@@ -51,7 +55,7 @@ public class main {
 		
 		
 		pane.addPanel(new Crediter());
-		pane.addPanel(new Admin());
+		pane.addPanel(Admin.getInstance());
 		pane.addPanel(new BierePong());
 		test1.setLayout(new MigLayout("center"));
 		test1.setBackground(Color.black);
