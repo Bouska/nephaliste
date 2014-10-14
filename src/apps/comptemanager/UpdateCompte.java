@@ -57,12 +57,12 @@ public class UpdateCompte extends JPanel implements ActionListener{
 		label.setFont(new Font("Arial",Font.BOLD,80));
 		label.setForeground(new Color(255,255,255,145));
 		
-		header.setBackground(Colors.blue);
+		header.setBackground(Colors.compteBlue);
 		header.add(returnButton,"w 20%, h 100%");
 		header.add(label,"align center,w 60%,h 100%");
 		
 		contentPane.setLayout(new MigLayout());
-		contentPane.setBackground(Colors.blue);
+		contentPane.setBackground(Colors.compteBlue);
 		
 		
 		
@@ -70,21 +70,21 @@ public class UpdateCompte extends JPanel implements ActionListener{
 		fnameField.setBorder(null);
 		fnameField.setFont(new Font("Arial",Font.BOLD,20));
 		fnameField.setBackground(Color.white);
-		fnameField.setSelectionColor(Colors.blue);
+		fnameField.setSelectionColor(Colors.compteBlue);
 		fnameField.setHorizontalAlignment(JTextField.CENTER);
 
 		contentPane.add(fnameField, "gapy 2%, align center,h 10%, w 100%, wrap");
 		promoField.setBorder(null);
 		promoField.setFont(new Font("Arial",Font.BOLD,20));
 		promoField.setBackground(Color.white);
-		promoField.setSelectionColor(Colors.blue);
+		promoField.setSelectionColor(Colors.compteBlue);
 		promoField.setHorizontalAlignment(JTextField.CENTER);
 
 		contentPane.add(promoField, "gapy 1%, align center,h 10%, w 100%, wrap");
 		emailField.setBorder(null);
 		emailField.setFont(new Font("Arial",Font.BOLD,20));
 		emailField.setBackground(Color.white);
-		emailField.setSelectionColor(Colors.blue);
+		emailField.setSelectionColor(Colors.compteBlue);
 		emailField.setHorizontalAlignment(JTextField.CENTER);
 
 		contentPane.add(emailField, "gapy 1%, align center,h 10%, w 100%, wrap");
@@ -94,14 +94,14 @@ public class UpdateCompte extends JPanel implements ActionListener{
 		updateButton.setBorderPainted(false);
 		updateButton.setFont(new Font("Arial",Font.BOLD,30));
 		updateButton.setBackground(Color.white);
-		updateButton.setForeground(Colors.blue);
+		updateButton.setForeground(Colors.compteBlue);
 		updateButton.addActionListener(this);
 		contentPane.add(updateButton, "gapx 25%, gapy 2% , h 10%, w 50%");
 		
 		this.setLayout(new MigLayout("insets 0 0 0 0"));
 		this.add(header, "w 100%, h 20%,wrap");
 		this.add(contentPane,"gapx 20%,w 60%, h 80%");
-		this.setBackground(Colors.blue);
+		this.setBackground(Colors.compteBlue);
 		
 		
 	}

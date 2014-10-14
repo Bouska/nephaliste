@@ -52,7 +52,7 @@ public class CreationCompte extends JPanel implements ActionListener{
 		label.setFont(new Font("Arial",Font.BOLD,80));
 		label.setForeground(new Color(255,255,255,145));
 		
-		header.setBackground(Colors.blue);
+		header.setBackground(Colors.compteBlue);
 		header.add(returnButton,"w 20%, h 100%");
 		header.add(label,"align center,w 60%,h 100%");
 		
@@ -63,34 +63,34 @@ public class CreationCompte extends JPanel implements ActionListener{
 		fnameField.setBorder(null);
 		fnameField.setFont(new Font("Arial",Font.BOLD,20));
 		fnameField.setBackground(Color.white);
-		fnameField.setSelectionColor(Colors.blue);
+		fnameField.setSelectionColor(Colors.compteBlue);
 		fnameField.setHorizontalAlignment(JTextField.CENTER);
 		this.add(fnameField, "gapy 2%, align center,h 10%, w 70%, wrap");
 		nnameField.setBorder(null);		
 		nnameField.setFont(new Font("Arial",Font.BOLD,20));
 		nnameField.setBackground(Color.white);
-		nnameField.setSelectionColor(Colors.blue);
+		nnameField.setSelectionColor(Colors.compteBlue);
 		nnameField.setHorizontalAlignment(JTextField.CENTER);
 
 		this.add(nnameField, "gapy 1%, align center,h 10%, w 70%, wrap");
 		snameField.setBorder(null);
 		snameField.setFont(new Font("Arial",Font.BOLD,20));
 		snameField.setBackground(Color.white);
-		snameField.setSelectionColor(Colors.blue);
+		snameField.setSelectionColor(Colors.compteBlue);
 		snameField.setHorizontalAlignment(JTextField.CENTER);
 
 		this.add(snameField, "gapy 1%, align center,h 10%, w 70%, wrap");
 		promoField.setBorder(null);
 		promoField.setFont(new Font("Arial",Font.BOLD,20));
 		promoField.setBackground(Color.white);
-		promoField.setSelectionColor(Colors.blue);
+		promoField.setSelectionColor(Colors.compteBlue);
 		promoField.setHorizontalAlignment(JTextField.CENTER);
 
 		this.add(promoField, "gapy 1%, align center,h 10%, w 70%, wrap");
 		emailField.setBorder(null);
 		emailField.setFont(new Font("Arial",Font.BOLD,20));
 		emailField.setBackground(Color.white);
-		emailField.setSelectionColor(Colors.blue);
+		emailField.setSelectionColor(Colors.compteBlue);
 		emailField.setHorizontalAlignment(JTextField.CENTER);
 
 		this.add(emailField, "gapy 1%, align center,h 10%, w 70%, wrap");
@@ -99,10 +99,10 @@ public class CreationCompte extends JPanel implements ActionListener{
 		createButton.setBorderPainted(false);
 		createButton.setFont(new Font("Arial",Font.BOLD,30));
 		createButton.setBackground(Color.white);
-		createButton.setForeground(Colors.blue);
+		createButton.setForeground(Colors.compteBlue);
 		createButton.addActionListener(this);
 		this.add(createButton, "gapx 25%, gapy 2% , h 10%, w 50%");
-		this.setBackground(Colors.blue);
+		this.setBackground(Colors.compteBlue);
 	}
 	
 	public void update(){
