@@ -43,7 +43,7 @@ public class Mail extends JPanel implements IAppPanel{
 		header.setLayout(new MigLayout());
 		header.add(returnButton,"w 20%,h 100%");
 		header.setBackground(Colors.blue);
-		JLabel label = new JLabel("MAIL");
+		JLabel label = new JLabel("MAILS");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setVerticalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("Arial",Font.BOLD,80));

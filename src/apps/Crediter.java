@@ -34,6 +34,7 @@ public class Crediter extends JPanel implements IAppPanel,ActionListener {
 	private JPanel pieces = new JPanel();
 	SemiTransparentTextField montant = new SemiTransparentTextField("0.0");
 	private TransparentButton okButton = new TransparentButton("OK");
+	private TransparentButton resetButton=new TransparentButton("RESET");
 	private BufferedImage crediter = null;
 	private BufferedImage crediterHeader = null;
 	private ImageButton returnButton ;
@@ -61,7 +62,12 @@ public class Crediter extends JPanel implements IAppPanel,ActionListener {
 		add(montant,"gapy 2%,align center ,w 60%, h 10%,wrap");
 		add(billets,"gapy 3%,align center, w 35%, h 25%,wrap");
 		add(pieces,"gapy 2%,align center, w 60%, h 15%,wrap");
-		add(okButton,"gapy 3% ,align center, w 20%,h 10%");
+		JPanel inter = new JPanel();
+		inter.setLayout(new MigLayout());
+		inter.setBackground(Colors.green);;
+		inter.add(okButton,"w 45%,h 100%");
+		inter.add(resetButton,"gap 10%,w 45%,h 100%");
+		add(inter,"gapy 3% ,align center, w 40%,h 10%");
 		loadImages();
 		header.setLayout(new MigLayout());
 		header.add(returnButton,"w 20%,h 100%");
@@ -75,17 +81,22 @@ public class Crediter extends JPanel implements IAppPanel,ActionListener {
 		
 		montant.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		montant.setHorizontalAlignment(JTextField.CENTER);
-		montant.setFont(new Font("Arial",Font.BOLD,60));
+		montant.setFont(new Font("Arial",Font.BOLD,40));
 		montant.setBorder(null);
 		montant.setBackground(Color.white);
 		montant.setForeground(Colors.green);
 		montant.setSelectionColor(Colors.green);
 		montant.setEditable(false);
 		okButton.setBorderPainted(false);
-		okButton.setFont(new Font("Arial",Font.BOLD,60));
+		okButton.setFont(new Font("Arial",Font.BOLD,40));
 		okButton.setBackground(Color.white);
 		okButton.setForeground(Colors.green);
 		okButton.addActionListener(this);
+		resetButton.setBorderPainted(false);
+		resetButton.setFont(new Font("Arial",Font.BOLD,40));
+		resetButton.setBackground(Color.white);
+		resetButton.setForeground(Colors.green);
+		resetButton.addActionListener(this);
 		
 		
 		
@@ -181,6 +192,10 @@ public class Crediter extends JPanel implements IAppPanel,ActionListener {
 			double newSolde = oldSolde+montant;
 		    Requests.setClientSolde(Client.getNom(),String.valueOf(newSolde ));
 		}
+			montant.setText("0.0");
+		}
+		else if(e.getSource()==resetButton)
+		{
 			montant.setText("0.0");
 		}
 		else

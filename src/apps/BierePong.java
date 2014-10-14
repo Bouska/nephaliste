@@ -43,7 +43,7 @@ public class BierePong extends JPanel implements IAppPanel{
 		header.setLayout(new MigLayout());
 		header.add(returnButton,"w 20%,h 100%");
 		header.setBackground(Colors.yellow);
-		JLabel label = new JLabel("BEERPONG");
+		JLabel label = new JLabel("BEER PONG");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setVerticalAlignment(SwingConstants.CENTER);
 		label.setFont(new Font("Arial",Font.BOLD,80));
