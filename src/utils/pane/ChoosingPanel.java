@@ -62,7 +62,7 @@ public class ChoosingPanel extends JPanel{
 			
 			
 		}
-		for(int i =0;i<p.size();i++)
+		for(int i =0;i<p.size()-1;i++)
 		{
 			final int e = i;
 			
@@ -196,17 +196,17 @@ pAction.add( new Runnable(){
 	}
 	private void disableActions() {
 
-		for(ChosenPanel pi : p)
+		for(int i =0;i<p.size()-1;i++)
 		{
-			pi.disableAction();
+			p.get(i).disableAction();
 		}
 	
 	}
 
 	private void enableActions() {
-		for(ChosenPanel pi : p)
+		for(int i =0;i<p.size()-1;i++)
 		{
-			pi.enableAction();
+			p.get(i).enableAction();
 		}
 		
 	}

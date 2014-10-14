@@ -8,7 +8,7 @@ public class Colors {
 	public static Color red = new Color(237,31,36);
 	public static Color darkRed = new Color(215,17,22);
 	public static Color lightBlue = new Color(96,202,230);
-	public static Color blue = new Color(48,108,181);
+	public static Color blue = new Color(66,111,182);
 	public static Color yellow =new Color(251,204,10);
 	public static Color orange=new Color(247,150,29);
 	public static Color lightGray=new Color(107,107,107);
