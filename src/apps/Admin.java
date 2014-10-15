@@ -31,7 +31,8 @@ public class Admin extends JPanel implements IAppPanel, ActionListener{
 	private BufferedImage adminHeader = null;
 	private BufferedImage createImage;
 	private BufferedImage updateImage;
-	
+	private BufferedImage setupImage;
+	private ImageButton setupButton;
 	private ImageButton createButton;
 	private ImageButton updateButton;
 	
@@ -39,13 +40,16 @@ public class Admin extends JPanel implements IAppPanel, ActionListener{
 	private static final String MAINPANEL = "mainPanel";
 	private static final String CREATEPANEL = "createProduct";
 	private static final String UPDATEPANEL = "updateProduct";
+	private static final String SETUPPANEL = "setupPane";
 	
 	private CreateProduct cp;
 	private UpdateProduct up;
+	private Settings sp;
 	
 	private Admin()
 	{
 		try {		
+			setupImage = ImageIO.read(new File("./resources/img/admin/settings.png"));
 			createImage = ImageIO.read(new File("./resources/img/admin/create.png"));
 			updateImage = ImageIO.read(new File("./resources/img/admin/update.png"));
 			admin=ImageIO.read(new File("./resources/img/admin.png"));
@@ -63,17 +67,20 @@ public class Admin extends JPanel implements IAppPanel, ActionListener{
 		createButton = new ImageButton(createImage);
 		updateButton = new ImageButton(updateImage);
 		returnButton = new ImageButton(adminHeader);
-	
+		setupButton = new ImageButton(setupImage);
+		
 		createButton.addActionListener(this);
 		updateButton.addActionListener(this);
+		setupButton.addActionListener(this);
 		
 		contentPane.setLayout(new MigLayout("insets 0 0 0 0"));
 		bpane.setLayout(new MigLayout("insets 0 0 0 0"));
 		
-		bpane.add(createButton, "gapx 15%, gapy 30%, w 32%, h 40%");
-		bpane.add(updateButton, "gapx 6%, gapy 30%, w 32%, h 40%");
+		bpane.add(createButton, "gapx 8%, gapy 30%, w 24%, h 30%");
+		bpane.add(updateButton, "gapx 6%, gapy 30%, w 24%, h 30%");
+		bpane.add(setupButton,"gapx 6%, gapy 30%, w 24%, h 30%");
 		contentPane.add(header,"w 100%,h 20%,wrap");
-		contentPane.add(bpane,"w 100%,h 80%");
+		contentPane.add(bpane,"align center,w 100%,h 80%");
 		
 		contentPane.setBackground(Colors.lightGray);
 		bpane.setBackground(Colors.lightGray);
@@ -92,7 +99,7 @@ public class Admin extends JPanel implements IAppPanel, ActionListener{
 		this.add(contentPane, MAINPANEL);
 		this.add(cp = new CreateProduct(), CREATEPANEL);
 		this.add(up = UpdateProduct.getInstance(), UPDATEPANEL);
-		
+		this.add(sp = new Settings(), SETUPPANEL);
 	}
 	
 	private static class SingletonHolder{
@@ -135,6 +142,9 @@ public class Admin extends JPanel implements IAppPanel, ActionListener{
 		}
 		else if(arg0.getSource() == updateButton){ 
 			cl.show(this, UPDATEPANEL);
+		}
+		else if(arg0.getSource() == setupButton){
+			cl.show(this, SETUPPANEL);
 		}
 	}
 

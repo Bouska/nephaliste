@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class DataBaseInterface {
 
-	private String password = "682mex71"; //
+	private String password = "682mex71"; //682mex71
 	private String user = "root";
 	private String adresse = "10.12.159.157:3306/"; //
 
