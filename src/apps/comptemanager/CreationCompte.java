@@ -118,9 +118,10 @@ public class CreationCompte extends JPanel implements ActionListener{
 		// TODO Auto-generated method stub
 		if(arg0.getSource() == createButton){
 			Requests.createNewClient(fnameField.getText(),snameField.getText(),nnameField.getText(),Integer.parseInt(promoField.getText()), emailField.getText());
+			update();
 			fc = FicheClient.getInstance();
 			fc.updateAutocompleter();
-			update();
+			
 		}
 		else if(arg0.getSource() == returnButton){
 			CardLayout cl = (CardLayout)Compte.getInstance().getLayout();

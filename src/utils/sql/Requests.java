@@ -6,6 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Locale;
 
 
 
@@ -98,6 +99,18 @@ public class Requests {
 		return historic;
 		
 	}
+	static public void insertToHistoric(String client, String produit, String newSolde){
+		Date date = new Date();
+		DateFormat formatedDate = new SimpleDateFormat("dd-MM-yyyy hh:mm a");
+		String request = "INSERT INTO historique (date, client, produit, solde) VALUES ('"+formatedDate.format(date)+"','"+client+"','"+produit+"','"+newSolde+"')";
+		System.out.println(request);
+	}
+	
+	static public boolean clientExist(String client){
+		String request = "SELECT nom FROM comptes WHERE";
+		return true;
+	}
+	
 	static public void setClientSolde(String client,String amount)
 	{
 		String request = "UPDATE comptes SET solde = solde + " + amount + " WHERE nom = '" + client + "'";
