@@ -17,6 +17,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import utils.pane.AccountAutoCompleter;
+import utils.pane.ImageButton;
 import utils.pane.ImagePanel;
 import utils.sql.DataBaseInterface;
 import utils.sql.Requests;
@@ -32,7 +33,7 @@ public class FicheClient extends JPanel {
 	private DataBaseInterface database = new DataBaseInterface();
 	private AccountAutoCompleter autocompleter;
 	private ImagePanel coopeman;
-	private ImagePanel search;
+	private ImageButton search;
 	private JPanel photo = new JPanel();
 	private JLabel nom = new JLabel("Client");
 	private JLabel solde = new JLabel("Solde");
@@ -78,9 +79,10 @@ public class FicheClient extends JPanel {
 		
 		
 		textSearch.setBorder(null);
-		search = new ImagePanel(search_img);
+		search = new ImageButton(search_img);
 		coopeman = new ImagePanel(nonCoopeman_img);
-		names = database.readRequest("SELECT nom FROM comptes WHERE promo > 2011 AND ouvert=1");
+		
+		names=database.readRequest("SELECT nom FROM comptes WHERE promo > 2011 AND ouvert=1");
 		Collections.sort(names);
 		autocompleter = new AccountAutoCompleter(this.textSearch, names,this);
 		photo.setBackground(new Color(125,187,162));

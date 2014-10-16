@@ -187,7 +187,7 @@ public class Crediter extends JPanel implements IAppPanel,ActionListener {
 		if(e.getSource()==okButton)
 		{	if(Client.isInit())
 		{
-			double oldSolde = Double.parseDouble(Requests.getClientSolde(Client.getNom()));
+			
 			double montant = Double.parseDouble(this.montant.getText());
 		    Requests.setClientSolde(Client.getNom(),""+montant);
 		}

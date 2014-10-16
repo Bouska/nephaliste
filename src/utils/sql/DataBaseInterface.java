@@ -9,9 +9,12 @@ import java.util.ArrayList;
 
 public class DataBaseInterface {
 
-	private String password = "682mex71"; //
+	//private String password = "682mex71"; //
+	//private String user = "root";
+	//private String adresse = "10.12.159.157:3306/"; //
+	private String password = ""; //
 	private String user = "root";
-	private String adresse = "10.12.159.157:3306/"; //
+	private String adresse = "localhost/"; //
 
 	/**
 	 * Interface de la base de donnée, une seule instance de la classe suffit !
@@ -62,6 +65,6 @@ public class DataBaseInterface {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return null;
+		return new ArrayList<String>();
 	}
 }
