@@ -22,7 +22,7 @@ public class CreationCompte extends JPanel implements ActionListener{
 	
 	private TransparentButton createButton;
 	private JPanel header = new JPanel();
-	private SemiTransparentTextField fnameField = new SemiTransparentTextField("Prénom");
+	private SemiTransparentTextField fnameField = new SemiTransparentTextField("PrÃ©nom");
 	private SemiTransparentTextField snameField = new SemiTransparentTextField("Surnom");
 	private SemiTransparentTextField nnameField = new SemiTransparentTextField("Nom");
 	private SemiTransparentTextField promoField = new SemiTransparentTextField("Promo");
@@ -95,7 +95,7 @@ public class CreationCompte extends JPanel implements ActionListener{
 
 		this.add(emailField, "gapy 1%, align center,h 10%, w 70%, wrap");
 		
-		createButton = new TransparentButton("Créer le Compte");
+		createButton = new TransparentButton("CrÃ©er le Compte");
 		createButton.setBorderPainted(false);
 		createButton.setFont(new Font("Arial",Font.BOLD,30));
 		createButton.setBackground(Color.white);
@@ -106,9 +106,9 @@ public class CreationCompte extends JPanel implements ActionListener{
 	}
 	
 	public void update(){
-		this.fnameField.setText("Prénom");
-		this.nnameField.setText("Surnom");
-		this.snameField.setText("Nom");
+		this.fnameField.setText("PrÃ©nom");
+		this.snameField.setText("Surnom");
+		this.nnameField.setText("Nom");
 		this.promoField.setText("Promo");
 		this.emailField.setText("E-Mail");
 	}
