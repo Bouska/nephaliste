@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 
 import javax.swing.*;
 
@@ -19,7 +20,9 @@ public class LetterButton extends JCheckBox{
 	
 	@Override
 	public void paintComponent(Graphics g){
-		Graphics2D g2d = (Graphics2D) g.create();		
+		Graphics2D g2d = (Graphics2D) g.create();
+		g2d.setRenderingHint(RenderingHints.KEY_TEXT_ANTIALIASING,
+				RenderingHints.VALUE_TEXT_ANTIALIAS_GASP);
 		
 		
 		if(this.isSelected()){
