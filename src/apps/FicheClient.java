@@ -117,7 +117,7 @@ public class FicheClient extends JPanel {
 	private void loadImages() throws IOException
 	{
 		search_img = ImageIO.read(new File("./resources/img/recherche.png"));
-		coopeman_img = ImageIO.read(new File("./resources/img/coopemanpetit.png"));
+		coopeman_img = ImageIO.read(new File("./resources/img/Coopemanpetit.png"));
 		nonCoopeman_img = ImageIO.read(new File("./resources/img/NonCoopeman.png"));
 	}
 	public void updateClient(String client)
