@@ -28,7 +28,7 @@ public class DataBaseInterface {
 
 	public void writeRequest(String request){
 		String url = this.adresse; 
-		String dbName = "nephaliste";					
+		String dbName = "nephaliste_new";
 		String driver = "com.mysql.jdbc.Driver";	
 		String userName = this.user;					
 		String password = this.password;			
@@ -45,7 +45,7 @@ public class DataBaseInterface {
 
 	public ArrayList<String> readRequest(String request){
 		String url = this.adresse;
-		String dbName = "nephaliste";
+		String dbName = "nephaliste_new";
 		String driver = "com.mysql.jdbc.Driver";
 		String userName = this.user;
 		String password = this.password;
