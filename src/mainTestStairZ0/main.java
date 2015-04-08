@@ -11,6 +11,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -36,7 +37,10 @@ public class main {
 
 	public static void main(String[] args) throws IOException {
 		SLAnimator.start();
-		JFrame test = new JFrame("Néphaliste");
+		JFrame test = new JFrame("Nï¿½phaliste");
+
+		BufferedImage icon = ImageIO.read(new File("./resources/img/Coopemanpetit.png"));
+		test.setIconImage(icon);
 		
 		test.setBackground(Color.black);
 		ChoosingPanel pane = new ChoosingPanel(3,3);
