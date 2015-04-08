@@ -97,6 +97,7 @@ public class Crediter extends JPanel implements IAppPanel,ActionListener {
 		resetButton.setBackground(Color.white);
 		resetButton.setForeground(Colors.green);
 		resetButton.addActionListener(this);
+		returnButton.addActionListener(this);
 		
 		
 		
@@ -193,7 +194,7 @@ public class Crediter extends JPanel implements IAppPanel,ActionListener {
 		}
 			montant.setText("0.0");
 		}
-		else if(e.getSource()==resetButton)
+		else if(e.getSource()==resetButton || e.getSource()==returnButton)
 		{
 			montant.setText("0.0");
 		}
